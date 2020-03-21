@@ -12,20 +12,31 @@ app.config['MYSQL_DATABASE_DB'] = 'BucketList'
 app.config['MYSQL_DATABASE_HOST'] = 'localhost'
 mysql.init_app(app)
 
-
 @app.route('/')
 def main():
     return render_template('index.html')
 
-@app.route('/showSignUp')
+@app.route('/showSignup')
 def showSignUp():
     return render_template('signup.html')
+
+@app.route('/showLogin')
+def showMap():
+    return render_template('login.html')
 
 @app.route('/showMap')
 def showMap():
     return render_template('map.html')
 
-@app.route('/signUp',methods=['POST','GET'])
+@app.route('/showProfile')
+def showMap():
+    return render_template('profile.html')
+
+@app.route('/showDeliveries')
+def showMap():
+    return render_template('deliveries.html')
+
+@app.route('/signup',methods=['POST','GET'])
 def signUp():
     try:
         _name = request.form['inputName']
