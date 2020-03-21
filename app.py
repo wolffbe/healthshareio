@@ -1,4 +1,4 @@
-from flask import Flask, render_template, json, request, url_for, redirect, flash 
+from flask import Flask, render_template, json, request, url_for, redirect, flash, jsonify
 from werkzeug.security import generate_password_hash, check_password_hash
 import mysql.connector
 
@@ -106,13 +106,13 @@ def showLogin():
         details=request.form
         fName=details['fname']
         lName=details['lname']
-        email='hallo'
         
-        sql = "INSERT INTO users(username, password, email) VALUES (%s, %s, %s)"
-        val=(fName, lName, email)
+        
+        sql = "INSERT INTO users(fname, lname) VALUES (%s, %s)"
+        val=(fName, lName)
         
         cur=mydb.cursor()
-        #cur.execute("INSERT INTO users(username, password, email) VALUES (%s, %s,%s)",(fName,lName,email))
+        #cur.execute("INSERT INTO users(fname, lname) VALUES (%s, %s,%s)",(fName,lName,email))
         cur.execute(sql, val)
         mydb.commit()
         cur.close()
@@ -124,6 +124,28 @@ def showLogin():
 @app.route('/map')
 def showMap():
     return render_template('map.html')
+
+@app.route('/mapPoints') #retrieve map points in the database
+def getMapPoints():
+    mycursor = mydb.cursor()
+
+    mycursor.execute("SELECT * FROM tbl_institutions")
+
+    myresult = mycursor.fetchall()
+    payload = []
+    content = {}
+    for result in myresult:
+       content = {'institutionid': result[0], 'name': result[1], 'type': result[2], 'address': result[3], 'contact': result[4], 'telephone': result[5], 'lat': result[6], 'lng': result[7]}
+       payload.append(content)
+       content = {}
+    return jsonify(payload)
+
+   # myresult = mycursor.fetchone() for just the first result
+    # jsonResults = json.dumps(myresult)
+
+  #  for x in myresult:
+   #     print(x)
+   # return ('test')
 
 @app.route('/showProfile')
 def showProfile():
