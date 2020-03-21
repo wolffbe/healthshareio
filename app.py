@@ -1,12 +1,14 @@
-from flask import Flask, render_template, json, request, url_for, redirect, flash 
+
+from flask import Flask, render_template, json, request, url_for, redirect, flash, jsonify
+
 from werkzeug.security import generate_password_hash, check_password_hash
+import requests
 import mysql.connector
-
-
 
 
 app = Flask(__name__)
 mydb = mysql.connector.connect(
+
 
         host="52.166.36.96",
         user="app",
@@ -16,9 +18,11 @@ mydb = mysql.connector.connect(
 
 print(mydb)
 
+
 @app.route('/')
 def main():
     return render_template('index.html')
+
 
 @app.route('/Signup', methods=['GET', 'POST'])
 def showSignUp():
@@ -156,6 +160,23 @@ def showProfile():
 @app.route('/showDeliveries')
 def showDeliveries():
     return render_template('deliveries.html')
+
+
+
+@app.route('/mapPoints') #retrieve map points in the database
+def getMapPoints():
+    mycursor = mydb.cursor()
+
+    mycursor.execute("SELECT * FROM tbl_institutions") #Mquery MySQLDB
+
+    myresult = mycursor.fetchall() 
+    payload = []
+    content = {}
+    for result in myresult: #create content for JSON
+       content = {'institutionid': result[0], 'name': result[1], 'type': result[2], 'address': result[3], 'contact': result[4], 'telephone': result[5], 'lat': result[6], 'lng': result[7]}
+       payload.append(content)
+       content = {}
+    return jsonify(payload)
 
 if __name__ == "__main__":
     app.run(port=5000)
