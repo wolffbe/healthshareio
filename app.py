@@ -8,13 +8,6 @@ import requests
 
 
 app = Flask(__name__)
-<<<<<<< HEAD
-app.config["DEBUG"] = True
-CORS(app)
-=======
-
-
->>>>>>> eb8c2318249aa89e92d127a7c42de9c87b4399ca
 
 @app.route('/')
 def main():
