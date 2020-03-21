@@ -1,4 +1,3 @@
-
 from flask import Flask, render_template, json, request, url_for, redirect, flash, jsonify
 
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -13,21 +12,17 @@ cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 
 mydb = mysql.connector.connect(
-
-
         host="52.166.36.96",
         user="app",
         passwd="covid789", 
         database ="hackathon"
-    )       
+    )
 
 print(mydb)
-
 
 @app.route('/')
 def main():
     return render_template('index.html')
-
 
 @app.route('/Signup', methods=['GET', 'POST'])
 def showSignUp():
@@ -52,7 +47,6 @@ def showSignUp():
         else: 
             institutionType="undefined"
         
-   
         #sql statement preparation
         sql_institution = "INSERT INTO tbl_institutions (name, type, address, contact, telephone, lat, lng) VALUES(%s,%s,%s,%s,%s,%s,%s)"
         values_institution = (inputName, institutionType,inputAddress, inputContact, inputTelephone, 0.0, 0.0)
@@ -103,8 +97,7 @@ def showSignUp():
                 print(error)
                 print(e)
                 return render_template('signup.html', error=error)
-
-               
+     
         if inputGive and inputAnzahlGive:
             for object in objecttypes: 
                 for key in object: 
@@ -166,8 +159,6 @@ def showProfile():
 def showDeliveries():
     return render_template('deliveries.html')
 
-
-
 @app.route('/mapPoints') #retrieve map points in the database
 def getMapPoints():
     mycursor = mydb.cursor()
@@ -185,4 +176,3 @@ def getMapPoints():
 
 if __name__ == "__main__":
     app.run(port=5000)
-
