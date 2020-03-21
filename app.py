@@ -19,6 +19,9 @@ mydb = mysql.connector.connect(
     )
 
 print(mydb)
+app.config['JSON_SORT_KEYS']=False
+app.config['JSON_AS_ASCII'] = False
+
 
 @app.route('/')
 def main():
@@ -166,12 +169,22 @@ def getMapPoints():
 
     myresult = mycursor.fetchall() 
     payload = []
+    
     content = {}
+
     for result in myresult: #create content for JSON
-       content = {'institutionid': result[0], 'name': result[1], 'type': result[2], 'address': result[3], 'contact': result[4], 'telephone': result[5], 'lat': result[6], 'lng': result[7]}
-       payload.append(content)
-       content = {}
+        content = {'id': result[0], 'name': result[1], 'address': result[3], 'lat': result[6], 'lng': result[7], 'type': result[2], 'market' : 'demand', 'disinfectant' : str(0) , 'gloves' : str(0), 'masks': str(0)}
+        sql=f'SELECT objecttype, SUM(amount) FROM tbl_demand WHERE fk_institutionid = {result[0]} GROUP BY objecttype;'
+        mycursor.execute(sql)
+        result_demand = mycursor.fetchall()
+        for demandtype in result_demand:
+            content[demandtype[0]]= str(demandtype[1])
+        payload.append(content)
+        content = {}
+
+    print(payload)
     return jsonify(payload)
+
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)
