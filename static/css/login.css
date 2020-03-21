@@ -3,12 +3,6 @@
     padding: 0;
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
-    background-color: #FFBDBD;
-}
-
-body {
-    background-color: #FFBDBD;
-
 }
 
 header {
@@ -16,13 +10,10 @@ header {
     justify-content: center;
     align-items: center;
     height: 15vh;
-    background-color: #FFBDBD;
-
 }
 
 .nav {
-    background-color: #FFBDBD;
-
+    height: 90vh;
 }
 
 .nav ul {
@@ -30,43 +21,28 @@ header {
     display: flex;
     justify-content: space-around;
     list-style: none;
-    background-color: #FFBDBD;
-
-}
-
-.nav {
-    background-color: #FFBDBD;
-    height: 90vh;
 }
 
 .nav ul li a {
-    color: rgb(225, 247, 213);
-
-}
-
-main {
-    background-color: #FFBDBD;
-
+    text-decoration: none;
+    color: #F1C9FF;
+    font-size: 20px;
 }
 
 .title {
+    height: 10vh;
     display: flex;
     justify-content: center;
-    background-color: #FFBDBD;
-    color: #E5E5E3;
+    align-items: center;
 }
 
 .title h1 {
-    font-weight: bold;
-}
-
-form {
-    background-color: #FFBDBD;
-
+    font-size: 3rem;
+    color: #FFBDBD;
 }
 
 .form-row {
-    height: 50vh;
+    height: 70vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -75,5 +51,12 @@ form {
 
 .button {
     border-radius: 10px;
+}
+
+.button button {
+    background-color: #FFBDBD;
+}
+
+.button button:hover {
     background-color: #E1F7D5;
 }

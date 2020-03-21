@@ -2,9 +2,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-
-body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -70,4 +67,8 @@ header {
 
 .button button {
   background-color: #FFBDBD;
+}
+
+.button button:hover {
+  background-color: #E1F7D5;
 }
