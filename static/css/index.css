@@ -2,15 +2,17 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    background-color: #FFBDBD;
 }
 
 body {
-    font-family: 'Montserrat', sans-serif;
-    background-color: #FFE164;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #FFBDBD;
 }
 
 header {
-    position: fixed;
     width: 100%;
     top: 0;
     right: 0;
@@ -18,43 +20,28 @@ header {
 
 .nav {
     display: flex;
-    justify-content: space-between;
     height: 10vh;
-    padding: 10px;
-    background-color: white;
-}
-
-.logo {
-    display: flex;
+    background-color: #FFBDBD;
+    justify-content: right;
     align-items: center;
 }
 
-.logo h1 {
-    font-size: 3em;
-}
 
-.logo i {
-    font-size: 60px;
-    color: rgb(0, 0, 0);
-}
 
-.login {
-    display: flex;
-    align-items: center;
-}
-
-.login ul {
+.nav ul {
     display: flex;
     justify-content: space-between;
     list-style: none;
+    float: right;
 }
 
-.login ul li a {
-    padding: 40px;
+.nav ul li a {
     text-decoration: none;
+    padding: 40px;
+    color: black;
 }
 
-.login ul li a:hover {
+.nav ul li a:hover {
     text-decoration: underline;
 }
 
@@ -62,7 +49,6 @@ header {
     height: 75vh;
     display: flex;
     background-attachment: fixed;
-
 }
 
 .map {
@@ -72,10 +58,7 @@ header {
     justify-content: center;
     align-items: center;
     text-align: center;
-}
-
-.map h1 {
-    font-size: 6em;
+    background-color: #E5E3E3;
 }
 
 .leaderboard {
@@ -85,14 +68,11 @@ header {
     justify-content: center;
     align-items: center;
     text-align: center;
-}
-
-.leaderboard h1 {
-    font-size: 6em;
+    background-color: #E1F7D5;
 }
 
 .container-Submit {
-    height: 15vh;
+    height: 10vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -107,6 +87,6 @@ button {
     height: 50px;
     width: 150px;
     font-size: 20px;
-    background-color: transparent;
+    background-color: #F1C9FF;
     border-radius: 25px;
 }

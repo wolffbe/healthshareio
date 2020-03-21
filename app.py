@@ -1,15 +1,20 @@
 from flask import Flask, render_template, json, request
-from flaskext.mysql import MySQL
+
 from werkzeug.security import generate_password_hash, check_password_hash
 import requests
 from flask_restful import Resource, Api
 from flask_cors import CORS
 import requests
 
-mysql = MySQL()
+
 app = Flask(__name__)
+<<<<<<< HEAD
 app.config["DEBUG"] = True
 CORS(app)
+=======
+
+
+>>>>>>> eb8c2318249aa89e92d127a7c42de9c87b4399ca
 
 @app.route('/')
 def main():
@@ -34,6 +39,10 @@ def showProfile():
 @app.route('/showDeliveries')
 def showDeliveries():
     return render_template('deliveries.html')
+
+@app.route('/signup',methods=['POST','GET'])
+def signUp():
+    return('test')
 
 if __name__ == "__main__":
     app.run(port=5000)

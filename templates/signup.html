@@ -1,50 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Python Flask Bucket List App</title>
 
-    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
-    <link href="../static/css/signup.css" rel="stylesheet">
-    <script src="../static/js/jquery-1.11.2.js"></script>
-    <script src="../static/js/signUp.js"></script>
-   
-  </head>
+<head>
+  <title>Python Flask Bucket List App</title>
 
-  <body>
+  <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
+  <link href="../static/css/signup.css" rel="stylesheet">
+  <script src="../static/js/jquery-1.11.2.js"></script>
+  <script src="../static/js/signUp.js"></script>
+  <!--Stylesheet CSS-->
+  <link rel="stylesheet" href="/static/css/signup.css.css">
+  <!--Bootstrap-->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <div class="container">
-      <div class="header">
-        <nav>
-          <ul class="nav nav-pills pull-right">
-            <li role="presentation" ><a href="showHome">Home</a></li>
-            <li role="presentation"><a href="#">Sign In</a></li>
-            <li role="presentation" class="active"><a href="#">Sign Up</a></li>
-          </ul>
-        </nav>
-        <h3 class="text-muted">Python Flask App</h3>
+</head>
+
+<body>
+  <header>
+    <div class="nav">
+      <div class="login">
+        <ul>
+          <li><a href="#home">Map</a></li>
+          <li><a href="#home">Aufträge</a></li>
+          <li><a href="#home">Anmelden</a></li>
+          <li><a href="#home">Sign Up</a></li>
+        </ul>
       </div>
-
-      <div class="jumbotron">
-        <h1>Bucket List App</h1>
-        <form class="form-signin">
-        <label for="inputName" class="sr-only">Name</label>
-        <input type="name" name="inputName" id="inputName" class="form-control" placeholder="Name" required autofocus>
-        <label for="inputEmail" class="sr-only">Email address</label>
-        <input type="email" name="inputEmail" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-        <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" name="inputPassword" id="inputPassword" class="form-control" placeholder="Password" required>
-        
-        <button id="btnSignUp" class="btn btn-lg btn-primary btn-block" type="button">Sign up</button>
-      </form>
-      </div>
-
-      
-
-      <footer class="footer">
-        <p>&copy; Company 2015</p>
-      </footer>
-
     </div>
-  </body>
+  </header>
+  <main>
+    <div class="title">
+      <h1>Sign Up</h1>
+    </div>
+    <form>
+      <div class="form-group row">
+        <label for="inputName" class="col-sm-2 col-form-label">Name</label>
+        <div class="col-lg-3">
+          <input type="text" class="form-control" name="inputName" id="inputName"
+            placeholder="Bitte gib deinen Namen ein">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="inputInstitution" class="col-sm-2 col-form-label">Institution</label>
+        <div class="col-lg-3">
+          <select id="inputInstitution" class="form-control" name="inputInstitution">
+            <option selected>Bitte auswählen</option>
+            <option>Medizinische Einrichtung</option>
+            <option>Unternehmen</option>
+          </select> </div>
+      </div>
+      <div class="form-group row">
+        <label for="inputAdress" class="col-sm-2 col-form-label">Adresse</label>
+        <div class="col-lg-3">
+          <input type="text" class="form-control" name="inputAdress" id="inputAdress"
+            placeholder="Bitte gib die Adresse ein">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="inputAnsprechpartner" class="col-sm-2 col-form-label">Ansprechpartner</label>
+        <div class="col-lg-3">
+          <input type="text" class="form-control" name="inputAnsprechpartner" id="inputAnsprechpartner"
+            placeholder="Bitte gib uns einen Ansprechpartner">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="inputTelephone" class="col-sm-2 col-form-label">Telefonnummer</label>
+        <div class="col-lg-3">
+          <input type="text" class="form-control" name="inputTelephone" id="inputTelephone"
+            placeholder="Bitte gib deine Telefonnumer ein">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="inputNeed" class="col-sm-2 col-form-label">Ich brauche</label>
+        <div class="col-lg-3">
+          <select id="inputNeed" name="inputNeed" class="form-control">
+            <option selected>Bitte auswählen</option>
+            <option>Desinfikationsmittel</option>
+            <option>Masken</option>
+            <option>Handschuhe</option>
+          </select></div>
+      </div>
+      <div class="form-group row">
+        <label for="inputAnzahlNeed" class=" col-sm-2 col-form-label">Anzahl</label>
+        <div class="col-lg-3">
+          <input type="text" class="form-control" name="inputAnzahlNeed" id="inputAnzahlNeed"
+            placeholder="Bitte gib die Anzahl an">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="inputGive" class="col-sm-2 col-form-label">Ich gebe</label>
+        <div class="col-lg-3">
+          <select id="inputGive" name="inputGive" class="form-control">
+            <option selected>Bitte auswählen</option>
+            <option>Desinfikationsmittel</option>
+            <option>Masken</option>
+            <option>Handschuhe</option>
+          </select></div>
+      </div>
+      <div class="form-group row">
+        <label for="inputAnzahlGive" class=" col-sm-2 col-form-label">Anzahl</label>
+        <div class="col-lg-3">
+          <input type="text" name="inputAnzahlGive" class="form-control" id="inputAnzahlGive"
+            placeholder="Bitte gib die Anzahl an">
+        </div>
+      </div>
+      <div class="button">
+        <button type="submit" class="btn">Auftragssuche</button>
+      </div>
+    </form>
+  </main>
+</body>
+
+
 </html>
