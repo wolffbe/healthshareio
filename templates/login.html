@@ -10,18 +10,42 @@
   <script src="../static/js/jquery-1.11.2.js"></script>
   <script src="../static/js/signup.js"></script>
   <!--Stylesheet CSS-->
-  <link rel="stylesheet" href="/static/css/index.css">
-  <!--Stylesheet Fontawesome CSS-->
-  <link rel="stylesheet" href="/css/all.min.css">
-  <!--GOOGLE FONTS MONTSERRAT-->
-  <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/login.css">
+  <!--Bootstrap-->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
+
 <body>
-    <form method="POST" action="">
-        Name: <input type="text" name="name"><br>
-        E-mail: <input type="text" name="email"><br>
-        <input type="submit">
-        </form>
+  <header>
+    <div class="nav">
+      <ul>
+        <li><a href="#home">Map</a></li>
+        <li><a href="#home">Aufträge</a></li>
+        <li><a href="#home">Anmelden/Sign Up</a></li>
+      </ul>
+    </div>
+  </header>
+  <main>
+    <div class="title">
+      <h1>Login</h1>
+    </div>
+    <form method="POST" action="signup.html">
+      <div class="form-row">
+        <div class="form-group col-md-3">
+          <label for="inputEmail">Email</label>
+          <input type="text" class="form-control" id="inputEmail" placeholder="Bitte gib deine E-mail ein">
+        </div>
+        <div class="form-group col-md-3">
+          <label for="inputPassword">Passwort</label>
+          <input type="password" class="form-control" id="inputPassword" placeholder="Bitte gib dein Passwort ein">
+        </div>
+        <div class="button">
+          <button type="submit" class="btn btn-primary">Login</button>
+        </div>
+      </div>
+    </form>
+  </main>
 </body>
 
 </html>
