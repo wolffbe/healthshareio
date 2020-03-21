@@ -1,0 +1,112 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #FFE164;
+}
+
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    right: 0;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    height: 10vh;
+    padding: 10px;
+    background-color: white;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo h1 {
+    font-size: 3em;
+}
+
+.logo i {
+    font-size: 60px;
+    color: rgb(0, 0, 0);
+}
+
+.login {
+    display: flex;
+    align-items: center;
+}
+
+.login ul {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+}
+
+.login ul li a {
+    padding: 40px;
+    text-decoration: none;
+}
+
+.login ul li a:hover {
+    text-decoration: underline;
+}
+
+.container {
+    height: 75vh;
+    display: flex;
+    background-attachment: fixed;
+
+}
+
+.map {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.map h1 {
+    font-size: 6em;
+}
+
+.leaderboard {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.leaderboard h1 {
+    font-size: 6em;
+}
+
+.container-Submit {
+    height: 15vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.container-Submit p {
+    font-size: 2em;
+}
+
+button {
+    height: 50px;
+    width: 150px;
+    font-size: 20px;
+    background-color: transparent;
+    border-radius: 25px;
+}
