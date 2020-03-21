@@ -134,8 +134,16 @@
         if (places.length == 0) {
           return;
         }
-        
+
         map.fitBounds(bounds);
+      });
+
+      $.ajax({
+        crossOrigin: true,
+        url: "http://127.0.0.1:5000/mapPoints",
+        success: function (data) {
+          console.log(data);
+        }
       });
 
     }

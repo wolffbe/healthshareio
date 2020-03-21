@@ -1,0 +1,33 @@
+<html>
+
+<head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <title>Healthshare</title>
+</head>
+
+<body>
+    <script>
+        $.ajax({
+            type: 'get',
+            url: 'http://localhost:5000/mapPoints',
+            crossDomain: true,
+            data: "my_request_is=foo",
+            dataType: 'json',
+            headers: {
+                "Access-Control-Allow-Origin" : "*"
+            },
+            success: function (responseData, textStatus, jqXHR) {
+                console.log(responseData);
+            },
+            error: function (responseData, textStatus, errorThrown) {
+                console.warn(responseData, textStatus, errorThrown);
+                alert('CORS failed - ' + textStatus);
+            }
+        });
+    </script>
+    <!-- Replace the value of the key parameter with your own API key. -->
+</body>
+
+</html>

@@ -4,8 +4,13 @@ from werkzeug.security import generate_password_hash, check_password_hash
 import requests
 import mysql.connector
 
+from flask_cors import CORS, cross_origin
 
 app = Flask(__name__)
+
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
+
 mydb = mysql.connector.connect(
        host="52.166.36.96",
         user="app",
