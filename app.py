@@ -1,13 +1,17 @@
-from flask import Flask, render_template, json, request
+from flask import Flask, render_template, json, request, url_for, redirect, flash, jsonify
 
 from werkzeug.security import generate_password_hash, check_password_hash
 import requests
-from flask_restful import Resource, Api
-from flask_cors import CORS
-import requests
+import mysql.connector
 
 
 app = Flask(__name__)
+mydb = mysql.connector.connect(
+       host="52.166.36.96",
+        user="app",
+        passwd="covid789", 
+        database ="hackathon"
+    ) #connect to our Azure DB
 
 @app.route('/')
 def main():
@@ -36,6 +40,22 @@ def showDeliveries():
 @app.route('/signup',methods=['POST','GET'])
 def signUp():
     return('test')
+
+@app.route('/mapPoints') #retrieve map points in the database
+def getMapPoints():
+    mycursor = mydb.cursor()
+
+    mycursor.execute("SELECT * FROM tbl_institutions") #Mquery MySQLDB
+
+    myresult = mycursor.fetchall() 
+    payload = []
+    content = {}
+    for result in myresult: #create content for JSON
+       content = {'institutionid': result[0], 'name': result[1], 'type': result[2], 'address': result[3], 'contact': result[4], 'telephone': result[5], 'lat': result[6], 'lng': result[7]}
+       payload.append(content)
+       content = {}
+    return jsonify(payload)
+
 
 if __name__ == "__main__":
     app.run(port=5000)
