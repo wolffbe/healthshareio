@@ -21,6 +21,9 @@ def main():
 def showSignUp():
     return render_template('signup.html')
 
+@app.route('/showMap')
+def showMap():
+    return render_template('map.html')
 
 @app.route('/signUp',methods=['POST','GET'])
 def signUp():
