@@ -1,29 +1,31 @@
-
 from flask import Flask, render_template, json, request, url_for, redirect, flash, jsonify
 
 from werkzeug.security import generate_password_hash, check_password_hash
 import requests
 import mysql.connector
 
+from flask_cors import CORS, cross_origin
 
 app = Flask(__name__)
+
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
+
 mydb = mysql.connector.connect(
-
-
         host="52.166.36.96",
         user="app",
         passwd="covid789", 
         database ="hackathon"
-    )       
+    )
 
 print(mydb)
 app.config['JSON_SORT_KEYS']=False
 app.config['JSON_AS_ASCII'] = False
 
+
 @app.route('/')
 def main():
     return render_template('index.html')
-
 
 @app.route('/Signup', methods=['GET', 'POST'])
 def showSignUp():
@@ -48,7 +50,6 @@ def showSignUp():
         else: 
             institutionType="undefined"
         
-   
         #sql statement preparation
         sql_institution = "INSERT INTO tbl_institutions (name, type, address, contact, telephone, lat, lng) VALUES(%s,%s,%s,%s,%s,%s,%s)"
         values_institution = (inputName, institutionType,inputAddress, inputContact, inputTelephone, 0.0, 0.0)
@@ -99,8 +100,7 @@ def showSignUp():
                 print(error)
                 print(e)
                 return render_template('signup.html', error=error)
-
-               
+     
         if inputGive and inputAnzahlGive:
             for object in objecttypes: 
                 for key in object: 
@@ -141,7 +141,6 @@ def showLogin():
         val=(fName, lName, email)
         
         cur=mydb.cursor()
-        #cur.execute("INSERT INTO users(username, password, email) VALUES (%s, %s,%s)",(fName,lName,email))
         cur.execute(sql, val)
         mydb.commit()
         cur.close()
@@ -161,8 +160,6 @@ def showProfile():
 @app.route('/showDeliveries')
 def showDeliveries():
     return render_template('deliveries.html')
-
-
 
 @app.route('/mapPoints') #retrieve map points in the database
 def getMapPoints():
@@ -188,18 +185,6 @@ def getMapPoints():
     print(payload)
     return jsonify(payload)
 
-    #Id = institution id
-    #name = name 
-    #address = address
-    #lat
-    #lng
-    #type = objecttype
-    #market = machen wir fix
-    #SELECT * FROM tbl_demand where institutioid = id grioup by objecttype ö
-    # --> 
-    
 
-
-if __name__ == "__main__":
-    app.run(port=5000)
-
+if __name__ == '__main__':
+    app.run(debug=True, host='0.0.0.0', port=5000)
