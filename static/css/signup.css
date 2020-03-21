@@ -2,22 +2,16 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background-color: rgb(255, 189, 189);
 }
 
 body {
   font-family: Arial, Helvetica, sans-serif;
-  background-color: rgb(255, 189, 189);
-
 }
 
 header {
   width: 100%;
   top: 0;
   right: 0;
-  background-color: rgb(255, 189, 189);
-  border-bottom: 3px solid rgb(225, 247, 213);
-
 }
 
 .nav {
@@ -25,8 +19,6 @@ header {
   justify-content: space-between;
   height: 10vh;
   padding: 10px;
-  background-color: white;
-  background-color: rgb(255, 189, 189);
 
 }
 
@@ -45,7 +37,8 @@ header {
 
 .login ul li a {
   text-decoration: none;
-  color: black;
+  color: #F1C9FF;
+  font-size: 20px;
 }
 
 .login ul li a:hover {
@@ -61,19 +54,20 @@ header {
 
 .title h1 {
   font-size: 3rem;
-  color: rgb(225, 247, 213);
+  color: #FFBDBD;
 }
 
-.form-row {
+.row {
   display: flex;
-  flex-direction: column;
   justify-content: center;
-  text-align: left;
-  align-items: center;
 }
-
 
 .button {
+  padding-top: 30px;
   display: flex;
   justify-content: center;
+}
+
+.button button {
+  background-color: #FFBDBD;
 }

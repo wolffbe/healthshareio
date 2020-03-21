@@ -35,46 +35,83 @@
       <h1>Sign Up</h1>
     </div>
     <form>
-      <div class="form-row">
-        <div class="form-group col-md-3">
-          <label for="inputName">Name</label>
-          <input type="text" class="form-control" id="inputName" placeholder="Bitte gib deinen Namen ein">
+      <div class="form-group row">
+        <label for="inputName" class="col-sm-2 col-form-label">Name</label>
+        <div class="col-lg-3">
+          <input type="text" class="form-control" name="inputName" id="inputName"
+            placeholder="Bitte gib deinen Namen ein">
         </div>
-        <div class="form-group col-md-3">
-          <label for="inputInstitution">Institution</label>
-          <select id="inputInstitution" class="form-control">
+      </div>
+      <div class="form-group row">
+        <label for="inputInstitution" class="col-sm-2 col-form-label">Institution</label>
+        <div class="col-lg-3">
+          <select id="inputInstitution" class="form-control" name="inputInstitution">
             <option selected>Bitte auswählen</option>
             <option>Medizinische Einrichtung</option>
             <option>Unternehmen</option>
-          </select>
+          </select> </div>
+      </div>
+      <div class="form-group row">
+        <label for="inputAdress" class="col-sm-2 col-form-label">Adresse</label>
+        <div class="col-lg-3">
+          <input type="text" class="form-control" name="inputAdress" id="inputAdress"
+            placeholder="Bitte gib die Adresse ein">
         </div>
-        <div class="form-group col-md-3">
-          <label for="inputAdress">Adresse</label>
-          <input type="text" class="form-control" id="inputAdress" placeholder="Bitte gib die Adresse ein">
-        </div>
-        <div class="form-group col-md-3">
-          <label for="inputAnsprechpartner">Ansprechpartner</label>
-          <input type="text" class="form-control" id="inputAnsprechpartner"
+      </div>
+      <div class="form-group row">
+        <label for="inputAnsprechpartner" class="col-sm-2 col-form-label">Ansprechpartner</label>
+        <div class="col-lg-3">
+          <input type="text" class="form-control" name="inputAnsprechpartner" id="inputAnsprechpartner"
             placeholder="Bitte gib uns einen Ansprechpartner">
         </div>
-        <div class="form-group col-md-3">
-          <label for="inputTelephone">Telefon</label>
-          <input type="text" class="form-control" id="inputTelephone" placeholder="Bitte gib deine Telefonnumer ein">
+      </div>
+      <div class="form-group row">
+        <label for="inputTelephone" class="col-sm-2 col-form-label">Telefonnummer</label>
+        <div class="col-lg-3">
+          <input type="text" class="form-control" name="inputTelephone" id="inputTelephone"
+            placeholder="Bitte gib deine Telefonnumer ein">
         </div>
-        <div class="form-group col-md-3">
-          <label for="inputNeed">Ich brauche...</label>
-          <input type="text" class="form-control" id="inputNeed" placeholder="bsp. Desinfikationsmittel, Masken,...">
+      </div>
+      <div class="form-group row">
+        <label for="inputNeed" class="col-sm-2 col-form-label">Ich brauche</label>
+        <div class="col-lg-3">
+          <select id="inputNeed" name="inputNeed" class="form-control">
+            <option selected>Bitte auswählen</option>
+            <option>Desinfikationsmittel</option>
+            <option>Masken</option>
+            <option>Handschuhe</option>
+          </select></div>
+      </div>
+      <div class="form-group row">
+        <label for="inputAnzahlNeed" class=" col-sm-2 col-form-label">Anzahl</label>
+        <div class="col-lg-3">
+          <input type="text" class="form-control" name="inputAnzahlNeed" id="inputAnzahlNeed"
+            placeholder="Bitte gib die Anzahl an">
         </div>
-        <div class="form-group col-md-3">
-          <label for="inputGive">Ich gebe...</label>
-          <input type="text" class="form-control" id="inputGive" placeholder="bsp. Desinfikationsmittel, Masken,...">
+      </div>
+      <div class="form-group row">
+        <label for="inputGive" class="col-sm-2 col-form-label">Ich gebe</label>
+        <div class="col-lg-3">
+          <select id="inputGive" name="inputGive" class="form-control">
+            <option selected>Bitte auswählen</option>
+            <option>Desinfikationsmittel</option>
+            <option>Masken</option>
+            <option>Handschuhe</option>
+          </select></div>
+      </div>
+      <div class="form-group row">
+        <label for="inputAnzahlGive" class=" col-sm-2 col-form-label">Anzahl</label>
+        <div class="col-lg-3">
+          <input type="text" name="inputAnzahlGive" class="form-control" id="inputAnzahlGive"
+            placeholder="Bitte gib die Anzahl an">
         </div>
       </div>
       <div class="button">
-        <button type="submit" class="btn btn-primary">Sign in</button>
+        <button type="submit" class="btn">Auftragssuche</button>
       </div>
     </form>
   </main>
 </body>
+
 
 </html>
