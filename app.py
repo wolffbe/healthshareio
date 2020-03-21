@@ -24,7 +24,7 @@ def main():
 def showSignUp():
     #bei Get soll er das nur rendern .. 
     if request.method=='POST': 
-        
+         #setzen der variablen
         details = request.form
         inputName = details['inputName']
         inputAddress= details['inputAdress']
@@ -35,7 +35,7 @@ def showSignUp():
         inputGive= details['inputGive']
         inputAnzahlGive = details['inputAnzahlGive']
 
-       
+        #set institution type
         if details['inputInstitution'] == "Medizinische Einrichtung": 
             institutionType = "medical"
         elif details['inputInstitution'] == "Unternehmen": 
@@ -44,58 +44,82 @@ def showSignUp():
             institutionType="undefined"
         
    
-        
-        sql_institution = "INSERT INTO tbl_institutions (name, type, address, contact, telephone, lat, lng) VALUES(%s,%s,%s,%s,%s,%s.%s)"
+        #sql statement preparation
+        sql_institution = "INSERT INTO tbl_institutions (name, type, address, contact, telephone, lat, lng) VALUES(%s,%s,%s,%s,%s,%s,%s)"
         values_institution = (inputName, institutionType,inputAddress, inputContact, inputTelephone, 0.0, 0.0)
 
         print(sql_institution)
         print(values_institution)
         
         cur = mydb.cursor()
+        
         try: 
+            #execution of insert statement
             cur.execute(sql_institution, values_institution)
             mydb.commit()
-            
-            cur.execute( "Select last_insert_id()")
-            inst_id = mydb.commit()
+            inst_id = cur.lastrowid
+            #print("bis hier ok")
 
-        except: 
+        except Exception as e: 
             error = "Something went wrong while inserting the data into tbl_institution"
             print(error)
+            print(e)
             return render_template('signup.html', error=error)
         
-        #print(inst_id)
-        return("ok")
-        # objecttypes = [{"Desinfektionsmittel":"disinfectants"}, {"Masken" : "masks"}, {"Handschuhe": "gloves"}]
-
-        # if inputNeed and inputAnzahlNeed: 
-        #     for object in objecttypes: 
-        #         for key in object: 
-        #             if inputNeed == key:
-        #                 objectypeDB = objecttypes['object']['key']
-            
-
-            
-        #     sql_demand= "INSERT INTO tbl_demand(fk_institution, objecttype, amount) VALUES (%s, %s,%s)"
-
-        #     values_demand=(inst_id, objectypeDB, inputAnzahlNeed )
-        #     try: 
-        #         cur.execute(sql_demand, values_demand)
-        #         mydb.commit()
-        #     except: 
-        #         error = "Something went wrong while inserting the data into tbl_demand"
-        #         return render_template('signup.html', error=error)
         
-        # return redirect("/map")
+        #set object type 
+        objecttypes = [{"Desinfektionsmittel":"disinfectants"}, {"Masken" : "masks"}, {"Handschuhe": "gloves"}]
+        
+        if inputNeed and inputAnzahlNeed: 
+            for object in objecttypes: 
+                for key in object: 
+                    if inputNeed == key:
+                        objecttypeDB = object[key]
+        
+        #print(objecttypeDB)  
+            #insert into demand table - statement preparation
+            sql_demand= "INSERT INTO tbl_demand(fk_institutionid, objecttype, amount) VALUES (%s, %s,%s)"
 
+            values_demand=(inst_id, objecttypeDB, inputAnzahlNeed )
+            print(sql_demand)
+            print(values_demand)
+            print(inst_id)
+            try: 
+                #insert into demand table - statement execution
+                cur.execute(sql_demand, values_demand)
+                mydb.commit()
+                print("bis hier ist ok")
+            except Exception as e: 
+                error = "Something went wrong while inserting the data into tbl_demand"
+                print(error)
+                print(e)
+                return render_template('signup.html', error=error)
 
-        #setzen der variablen
-        #generate sql und execute - für die institution
-        # generelt dann demand 
-        # fehler abfangen - if fehler dann error zurück 
-        # if no fehler -- redirect--auf map.html 
+               
+        if inputGive and inputAnzahlGive:
+            for object in objecttypes: 
+                for key in object: 
+                    if inputGive == key:
+                        objecttypeDB = object[key]
 
-    
+            sql_supply= "INSERT INTO tbl_supply(fk_institutionid, objecttype, amount) VALUES (%s, %s,%s)"
+
+            values_supply=(inst_id, objecttypeDB, inputAnzahlGive )
+            print(sql_supply)
+            print(values_supply)
+            print(inst_id)
+            try: 
+                #insert into demand table - statement execution
+                cur.execute(sql_supply, values_supply)
+                mydb.commit()
+                print("bis hier ist ok")
+            except Exception as e: 
+                error = "Something went wrong while inserting the data into tbl_demand"
+                print(error)
+                print(e)
+                return render_template('signup.html', error=error)
+
+        return redirect("/map")    
 
     elif request.method=='GET':
         return render_template('signup.html')
@@ -132,10 +156,6 @@ def showProfile():
 @app.route('/showDeliveries')
 def showDeliveries():
     return render_template('deliveries.html')
-
-@app.route('/signup',methods=['POST','GET'])
-def signUp():
-    return('test')
 
 if __name__ == "__main__":
     app.run(port=5000)
