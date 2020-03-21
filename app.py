@@ -138,7 +138,6 @@ def showLogin():
         val=(fName, lName, email)
         
         cur=mydb.cursor()
-        #cur.execute("INSERT INTO users(username, password, email) VALUES (%s, %s,%s)",(fName,lName,email))
         cur.execute(sql, val)
         mydb.commit()
         cur.close()
@@ -174,5 +173,5 @@ def getMapPoints():
        content = {}
     return jsonify(payload)
 
-if __name__ == "__main__":
-    app.run(port=5000)
+if __name__ == '__main__':
+    app.run(debug=True, host='0.0.0.0', port=5000)
