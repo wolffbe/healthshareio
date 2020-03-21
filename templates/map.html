@@ -19,6 +19,24 @@
       margin: 0;
       padding: 0;
     }
+
+    #pac-input {
+      background-color: #fff;
+      font-family: Roboto;
+      font-size: 15px;
+      font-weight: 300;
+      margin-left: 12px;
+      padding: 0 11px 0 13px;
+      text-overflow: ellipsis;
+      width: 400px;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+    }
+
+    #pac-input:focus {
+      border-color: #4d90fe;
+    }
   </style>
 </head>
 
@@ -38,74 +56,95 @@
 
     function initMap() {
       var map = new google.maps.Map(document.getElementById('map'), {
-        center: new google.maps.LatLng(53.550341, 10.000654),
-        zoom: 12
+        center: new google.maps.LatLng(51.282757, 10.495068),
+        zoom: 7
       });
       var infoWindow = new google.maps.InfoWindow;
 
-      for (var obj in json) {
-
-        var id = json[obj].id;
-        var name = json[obj].name;
-        var address = json[obj].address;
-        var point = new google.maps.LatLng(
-          parseFloat(json[obj].lat),
-          parseFloat(json[obj].lng));
-        var type = json[obj].type;
-        var market = json[obj].market;
-        var desinfectant = json[obj].desinfectant;
-        var gloves = json[obj].gloves;
-        var masks = json[obj].masks;
-
-        var infowincontent = document.createElement('div');
-        var strong = document.createElement('strong');
-        strong.textContent = name;
-        infowincontent.appendChild(strong);
-        infowincontent.appendChild(document.createElement('br'));
-        var text = document.createElement('text');
-        text.textContent = address;
-        infowincontent.appendChild(text);
-        if (market == "demand") {
-          console.log(market);
-          infowincontent.appendChild(text);
-          var text = document.createElement('p');
-          text.textContent = "Wir benötigen " +
-            desinfectant + " Liter Desinfektionsmittel, " +
-            gloves + " Paar Handschuhe und " +
-            masks + " Schutzmasken!";
-          infowincontent.appendChild(text);
-        } else if (market == "supply") {
-          var supply = document.createElement('p');
-          demand.textContent = "Wir bieten " +
-            desinfectant + " Liter Desinfektionsmittel, " +
-            gloves + " Paar Handschuhe und " +
-            masks + " Schutzmasken!";
-        } else { }
-
-        var btn = document.createElement("BUTTON");   // Create a <button> element
-        btn.innerHTML = "JETZT HELFEN!";                   // Insert text
-        infowincontent.appendChild(btn);
-
-        var icon = customLabel[type] || {};
+      for (i = 0; i < json.length; i++) {
+        var icon = customLabel[json[i].type] || {};
         var marker = new google.maps.Marker({
           map: map,
-          position: point,
+          position: new google.maps.LatLng(parseFloat(json[i].lat), parseFloat(json[i].lng)),
           label: icon.label
         });
-        marker.addListener('click', togglePopUp)
 
-        function togglePopUp() {
-          infoWindow.setContent(infowincontent);
-          infoWindow.open(map, marker);
-        }
+        google.maps.event.addListener(marker, 'click', (function (marker, i) {
+          return function () {
+            var infowincontent = null;
+            var infowincontent = document.createElement('div');
+            var strong = document.createElement('strong');
+            strong.textContent = json[i].name;
+            infowincontent.appendChild(strong);
+            infowincontent.appendChild(document.createElement('br'));
+            var text = document.createElement('text');
+            text.textContent = json[i].address;
+            infowincontent.appendChild(text);
+            if (json[i].market == "demand") {
+              infowincontent.appendChild(text);
+              var text = document.createElement('p');
+              text.textContent = "Wir benötigen " +
+                json[i].desinfectant + " Liter Desinfektionsmittel, " +
+                json[i].gloves + " Paar Handschuhe und " +
+                json[i].masks + " Schutzmasken!";
+              infowincontent.appendChild(text);
+            } else if (json[i].market == "supply") {
+              var supply = document.createElement('p');
+              demand.textContent = "Wir bieten " +
+                json[i].desinfectant + " Liter Desinfektionsmittel, " +
+                json[i].gloves + " Paar Handschuhe und " +
+                json[i].masks + " Schutzmasken!";
+            } else { }
+
+            var link = "localhost:5000/delivery/" + json[i].id;
+
+            var btn = document.createElement('button');
+            btn.textContent = 'JETZT HELFEN!';
+
+            // Buttons don't have an href. You need to set up a click event handler
+            btn.addEventListener("click", function () {
+              location = link; // Navigate to new page
+            });
+
+            // Add button to page
+            infowincontent.appendChild(btn);
+
+            infoWindow.setContent(infowincontent);
+            infoWindow.open(map, marker);
+          }
+        })(marker, i));
       }
-    }
 
+      // Create the search box and link it to the UI element.
+      var input = document.getElementById('pac-input');
+      var searchBox = new google.maps.places.SearchBox(input);
+      map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+      // Bias the SearchBox results towards current map's viewport.
+      map.addListener('bounds_changed', function () {
+        searchBox.setBounds(map.getBounds());
+      });
+
+      var markers = [];
+      // Listen for the event fired when the user selects a prediction and retrieve
+      // more details for that place.
+      searchBox.addListener('places_changed', function () {
+        var places = searchBox.getPlaces();
+
+        if (places.length == 0) {
+          return;
+        }
+        
+        map.fitBounds(bounds);
+      });
+
+    }
   </script>
   <!-- Replace the value of the key parameter with your own API key. -->
   <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAa2q4wDgv2bikmWv7fEgt1j66wJjltQYQ&callback=initMap">
     </script>
+  <input id="pac-input" class="controls" type="text" placeholder="Wo kannst du helfen?">
 </body>
 
 </html>
