@@ -52,101 +52,106 @@
       }
     };
 
-    var json = [{ "id": 1, "name": "Asklepios Krankenhaus St. Georg", "address": "Lohmühlenstraße 5, 20099 Hamburg", "lat": "53.552610", "lng": "10.018630", "type": "medical", "market": "demand", "disinfectant": 100, "gloves": 100, "masks": 100 }, { "id": 2, "name": "Facharztpraxis für Pneumologie und Gynäkologie | St. Georg", "address": "Steindamm 32, 20099 Hamburg", "lat": "53.5536654", "lng": "10.0127984", "type": "medical", "market": "demand", "disinfectant": 1, "gloves": 0, "masks": 0 }, { "id": 3, "name": "Gesundheitszentrum Dr. Dr. Müller und Kollegen AG", "address": "Kurze Mühren 6, 20095 Hamburg", "lat": "53.5529624", "lng": "10.003574", "type": "medical", "market": "demand", "disinfectant": 1, "gloves": 0, "masks": 0 }, { "id": 4, "name": "Dr. med. Paul Schulz prakt. Arzt", "address": "Grootsruhe 2, 20537 Hamburg", "lat": "53.5551489", "lng": "10.042497", "type": "medical", "market": "demand", "disinfectant": 1, "gloves": 0, "masks": 10 }, { "id": 5, "name": "Gemeinschaftspraxis für Allgemeinmedizin - Dr. Olaf Feuer; Cornelia Traub; Dr. Eda Siebke", "address": "Hein-Köllisch-Platz 1, 20359 Hamburg", "lat": "53.5477104", "lng": "9.9575079", "type": "medical", "market": "demand", "disinfectant": 1, "gloves": 0, "masks": 10 }, { "id": 6, "name": "Gemeinschaftspraxis für Allgemeinmedizin Hamburg", "address": "Clemens-Schultz-Straße 90, 20359 Hamburg", "lat": "53.5524253", "lng": "9.9639571", "type": "medical", "market": "demand", "disinfectant": 0, "gloves": 0, "masks": 10 }, { "id": 7, "name": "Pflegehotel im St. Matthäus Krankenhaus", "address": "Billstraße 28, 20539 Hamburg", "lat": "53.5412576", "lng": "10.0342172", "type": "medical", "market": "demand", "disinfectant": 0, "gloves": 0, "masks": 10 }, { "id": 8, "name": "Hebammenpraxis Hamburg", "address": "Armbruststraße 9, 20257 Hamburg", "lat": "53.5750086", "lng": "9.9427398", "type": "medical", "market": "demand", "disinfectant": 1, "gloves": 10, "masks": 10 }, { "id": 9, "name": "Seniorenhaus Christophorus", "address": "Maria-Louisen-Straße 30, 22301 Hamburg", "lat": "53.5931082", "lng": "10.0077099", "type": "medical", "market": "demand", "disinfectant": 1, "gloves": 10, "masks": 10 }, { "id": 10, "name": "G.U.A.R.D. Rettungswache Hamburg Nord", "address": "Alfredstraße 9, 22087 Hamburg", "lat": "53.559671", "lng": "10.0329609", "type": "medical", "market": "demand", "disinfectant": 1, "gloves": 10, "masks": 10 }];
+    $.ajax({
+      type: 'get',
+      url: 'http://localhost:5000/mapPoints',
+      crossDomain: true,
+      data: "my_request_is=foo",
+      dataType: 'json',
+      headers: {
+        "Access-Control-Allow-Origin": "*"
+      },
+      success: function (json, textStatus, jqXHR) {
+        function initMap() {
+          var map = new google.maps.Map(document.getElementById('map'), {
+            center: new google.maps.LatLng(51.282757, 10.495068),
+            zoom: 7
+          });
+          var infoWindow = new google.maps.InfoWindow;
 
-    function initMap() {
-      var map = new google.maps.Map(document.getElementById('map'), {
-        center: new google.maps.LatLng(51.282757, 10.495068),
-        zoom: 7
-      });
-      var infoWindow = new google.maps.InfoWindow;
-
-      for (i = 0; i < json.length; i++) {
-        var icon = customLabel[json[i].type] || {};
-        var marker = new google.maps.Marker({
-          map: map,
-          position: new google.maps.LatLng(parseFloat(json[i].lat), parseFloat(json[i].lng)),
-          label: icon.label
-        });
-
-        google.maps.event.addListener(marker, 'click', (function (marker, i) {
-          return function () {
-
-            var infowincontent = null;
-
-            var infowincontent = document.createElement('div');
-            var strong = document.createElement('strong');
-            strong.textContent = json[i].name;
-            infowincontent.appendChild(strong);
-            infowincontent.appendChild(document.createElement('br'));
-
-            var text = document.createElement('text');
-            text.textContent = json[i].address;
-            infowincontent.appendChild(text);
-
-            if (json[i].market == "demand") {
-              infowincontent.appendChild(text);
-              var text = document.createElement('p');
-              text.textContent = "Wir benötigen " +
-                json[i].disinfectant + " Liter Desinfektionsmittel, " +
-                json[i].gloves + " Paar Handschuhe und " +
-                json[i].masks + " Schutzmasken!";
-              infowincontent.appendChild(text);
-
-            } else if (json[i].market == "supply") {
-              var supply = document.createElement('p');
-              demand.textContent = "Wir bieten " +
-                json[i].disinfectant + " Liter Desinfektionsmittel, " +
-                json[i].gloves + " Paar Handschuhe und " +
-                json[i].masks + " Schutzmasken!";
-
-            var link = "localhost:5000/delivery/" + json[i].id;
-            var btn = document.createElement('button');
-            btn.textContent = 'JETZT HELFEN!';
-            btn.addEventListener("click", function () {
-              location = link; // Navigate to new page
+          for (i = 0; i < json.length; i++) {
+            var icon = customLabel[json[i].type] || {};
+            var marker = new google.maps.Marker({
+              map: map,
+              position: new google.maps.LatLng(parseFloat(json[i].lat), parseFloat(json[i].lng)),
+              label: icon.label
             });
-            infowincontent.appendChild(btn);
 
-            infoWindow.setContent(infowincontent);
-            infoWindow.open(map, marker);
+            google.maps.event.addListener(marker, 'click', (function (marker, i) {
+              return function () {
 
+                var infowincontent = null;
+
+                var infowincontent = document.createElement('div');
+                var strong = document.createElement('strong');
+                strong.textContent = json[i].name;
+                infowincontent.appendChild(strong);
+                infowincontent.appendChild(document.createElement('br'));
+
+                var text = document.createElement('text');
+                text.textContent = json[i].address;
+                infowincontent.appendChild(text);
+
+                if (json[i].market == "demand") {
+                  infowincontent.appendChild(text);
+                  var text = document.createElement('p');
+                  text.textContent = "Wir benötigen " +
+                    json[i].disinfectant + " Liter Desinfektionsmittel, " +
+                    json[i].gloves + " Paar Handschuhe und " +
+                    json[i].masks + " Schutzmasken!";
+                  infowincontent.appendChild(text);
+
+                } else if (json[i].market == "supply") {
+                  var supply = document.createElement('p');
+                  demand.textContent = "Wir bieten " +
+                    json[i].disinfectant + " Liter Desinfektionsmittel, " +
+                    json[i].gloves + " Paar Handschuhe und " +
+                    json[i].masks + " Schutzmasken!";
+
+                  var link = "localhost:5000/delivery/" + json[i].id;
+                  var btn = document.createElement('button');
+                  btn.textContent = 'JETZT HELFEN!';
+                  btn.addEventListener("click", function () {
+                    location = link; // Navigate to new page
+                  });
+                  infowincontent.appendChild(btn);
+
+                  infoWindow.setContent(infowincontent);
+                  infoWindow.open(map, marker);
+
+                }
+              }
+            })(marker, i));
           }
-        })(marker, i));
-      }
 
-      // Create the search box and link it to the UI element.
-      var input = document.getElementById('pac-input');
-      var searchBox = new google.maps.places.SearchBox(input);
-      map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+          // Create the search box and link it to the UI element.
+          var input = document.getElementById('pac-input');
+          var searchBox = new google.maps.places.SearchBox(input);
+          map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
 
-      // Bias the SearchBox results towards current map's viewport.
-      map.addListener('bounds_changed', function () {
-        searchBox.setBounds(map.getBounds());
-      });
+          // Bias the SearchBox results towards current map's viewport.
+          map.addListener('bounds_changed', function () {
+            searchBox.setBounds(map.getBounds());
+          });
 
-      var markers = [];
-      // Listen for the event fired when the user selects a prediction and retrieve
-      // more details for that place.
-      searchBox.addListener('places_changed', function () {
-        var places = searchBox.getPlaces();
+          var markers = [];
+          // Listen for the event fired when the user selects a prediction and retrieve
+          // more details for that place.
+          searchBox.addListener('places_changed', function () {
+            var places = searchBox.getPlaces();
 
-        if (places.length == 0) {
-          return;
-        }
+            if (places.length == 0) {
+              return;
+            }
 
-        map.fitBounds(bounds);
-      });
-
-      $.ajax({
-        crossOrigin: true,
-        url: "http://127.0.0.1:5000/mapPoints",
-        success: function (data) {
-          console.log(data);
+            map.fitBounds(bounds);
+          });
+        }},
+        error: function (responseData, textStatus, errorThrown) {
+          console.warn(responseData, textStatus, errorThrown);
+          alert('CORS failed - ' + textStatus);
         }
       });
-
-    }
   </script>
   <!-- Replace the value of the key parameter with your own API key. -->
   <script async defer
