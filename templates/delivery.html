@@ -1,0 +1,123 @@
+<<<<<<< Updated upstream
+=======
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <!--Stylesheet CSS-->
+    <link rel="stylesheet" href="/static/css/index1.css">
+</head>
+
+<body>
+
+    <nav class="navbar navbar-default" style="background-color:#ffbdbd; min-height: 70px; font-size: 20px;">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">
+                    <img src="{{url_for('static', filename='img/logo-small.png')}}" />
+                </a>
+                <p class="navbar-text" style="color: black;">Healthshare.io</p>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/Map" style="color: black;"> Map</a></li>
+                    <li><a href="/Signup" style="color: black;"><span class="glyphicon glyphicon-user"></span> Sign
+                            Up</a></li>
+                    <li><a href="/showLogin" style="color: black;"><span class="glyphicon glyphicon-log-in"></span>
+                            Login</a></li>
+                </ul>
+                <form class="navbar-form navbar-left">
+
+            </div>
+        </div>
+    </nav>
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="container">
+        <div>
+            <h3 align="center">Danke, dass Sie das Askelpios Klinikum St. Georg unterstützen möchten! Es werden</h3><b><h3>100</h3></b><h3> Liter
+                Desinfektionsmittel, </h3><b><h3>100</h3></b><h3> Paar Handschuhe und </h3><b><h3>100</h3></b><h3> Schutzmasken benötigt!</h3>
+        </div>
+    </div>
+
+    <div style="
+    padding-right: 200px;
+    padding-bottom: 30px;
+    padding-left: 200px;">
+        <h2>
+            <h3 align="center">Jetzt Beitrag konfigurieren!</h3><br>
+        </h2>
+        <form>
+            <div class="form-group">
+                <label for="disinfectant">
+                    <h4>Desinfektionsmittel:</h4>
+                </label>
+                <input type="disinfectant" class="form-control" id="disinfectant" placeholder="Liter"
+                    name="disinfectant">
+            </div>
+            <div class="form-group">
+                <label for="gloves">
+                    <h4>Handschuhe:</h4>
+                </label>
+                <input type="gloves" class="form-control" id="gloves" placeholder="Paar" name="gloves">
+            </div>
+            <div class="form-group">
+                <label for="masks">
+                    <h4>Schutzmasken:</h4>
+                </label>
+                <input type="masks" class="form-control" id="masks" placeholder="Anzahl" name="masks">
+            </div>
+            <button type="submit" class="btn btn-default">Wie viel kannst du beitragen?</button>
+        </form>
+    </div>
+
+    <div class="container">
+        <!-- Example row of columns -->
+        <div class="row">
+            <div class="col-md-4">
+                <h2 align="center">Beitrag</h2>
+                <div class="traffic_light">
+                    <img src="{{url_for('static', filename='img/yellow.png')}}" height="100px"
+                        style="display:block; margin-left: auto; margin-right: auto;" />
+                </div>
+            </div>
+            <div class="col-md-4">
+                <h2 align="center">Versand</h2>
+                <div class="traffic_light">
+                    <img src="{{url_for('static', filename='img/red.png')}}" height="100px"
+                        style="display:block; margin-left: auto; margin-right: auto;" />
+                </div>
+            </div>
+            <div class="col-md-4">
+                <h2 align="center">Erhalt</h2>
+                <div class="traffic_light">
+                    <img src="{{url_for('static', filename='img/red.png')}}" height="100px"
+                        style="display:block; margin-left: auto; margin-right: auto;" />
+                </div>
+            </div>
+        </div>
+    </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+    </nav>
+</body>
+
+</html>
+>>>>>>> Stashed changes
