@@ -19,14 +19,15 @@
 
     <nav class="navbar navbar-default" style="background-color: rgb(199, 245, 245); max-height: 90px; font-size: 20px; align-content: center;margin-bottom: 0px;">
         <div class="container-fluid">
-          <!-- Brand and toggle get grouped for better mobile display -->
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
               <span class="sr-only">Toggle navigation</span>
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
+
             <a class="navbar-brand" href="/" >
               <img alt="Brand" src="/static/Logo-small.png">
               
@@ -45,31 +46,34 @@
               <li style="margin-top: 13px;"><span class="glyphicon glyphicon-user"></span> Hallo, Satoshi Nakamoto</li>
           </ul>
                   
+
             </div>
-        </div> 
-      </nav>
+        </div>
+    </nav>
     <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="container">
+    <div class="container" style="
+    padding-bottom: 10px;
+    padding-top: 30px;">
         <div>
-            <h3 align="center">Danke, dass Sie das Askelpios Klinikum St. Georg unterstützen möchten! Es werden</h3><b><h3>100</h3></b><h3> Liter
-                Desinfektionsmittel, </h3><b><h3>100</h3></b><h3> Paar Handschuhe und </h3><b><h3>100</h3></b><h3> Schutzmasken benötigt!</h3>
+            <h3 align="center">Danke, dass Sie das Asklepios Klinikum St. Georg unterstützen möchten! Es werden 100 Liter Desinfektionsmittel, 100 Paar Handschuhe und 260 Schutzmasken benötigt!</h3 align="center">
         </div>
     </div>
 
     <div style="
     padding-right: 200px;
-    padding-bottom: 30px;
+    padding-bottom: 50px;
     padding-left: 200px;">
         <h2>
+
             <h3 align="center" style="font-weight: bolder;">{{welcometext}}</h3><br>
+
         </h2>
         <form action= "" method="POST">
             <div class="form-group">
                 <label for="disinfectant">
                     <h4>Desinfektionsmittel:</h4>
                 </label>
-                <input type="disinfectant" class="form-control" id="disinfectant" placeholder="Liter"
-                    name="disinfectant">
+                <input type="disinfectant" class="form-control" id="disinfectant" placeholder="Liter" name="disinfectant">
             </div>
             <div class="form-group">
                 <label for="gloves">
@@ -83,7 +87,7 @@
                 </label>
                 <input type="masks" class="form-control" id="masks" placeholder="Anzahl" name="masks">
             </div>
-            <button type="submit" class="btn btn-default">Wie viel kannst du beitragen?</button>
+            <button type="submit" class="btn btn-default">Jetzt spenden!</button>
         </form>
     </div>
 
@@ -93,32 +97,32 @@
             <div class="col-md-4">
                 <h2 align="center">Beitrag</h2>
                 <div class="traffic_light">
-                    <img src="{{beitrag}}" height="100px"
-                        style="display:block; margin-left: auto; margin-right: auto;" />
+
+                    <img src="{{beitrag}}" height="100px" style="display:block; margin-left: auto; margin-right: auto;" />
+
+                    
                 </div>
             </div>
             <div class="col-md-4">
                 <h2 align="center">Versand</h2>
                 <div class="traffic_light">
-                    <img src="{{versand}}" height="100px"
-                        style="display:block; margin-left: auto; margin-right: auto;" />
+                    <img src="{{versand}}" height="100px" style="display:block; margin-left: auto; margin-right: auto;" />
+
+
                 </div>
             </div>
             <div class="col-md-4">
                 <h2 align="center">Erhalt</h2>
                 <div class="traffic_light">
-                    <img src="{{url_for('static', filename='img/red.png')}}" height="100px"
-                        style="display:block; margin-left: auto; margin-right: auto;" />
+                    <img src="{{url_for('static', filename='img/red.png')}}" height="100px" style="display:block; margin-left: auto; margin-right: auto;" />
                 </div>
             </div>
         </div>
-    </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
     </nav>
-
-    <footer>
-        <p>&copy; healthshare.io 2020</p>
-    </footer>
 </body>
 
 </html>
