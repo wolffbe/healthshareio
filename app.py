@@ -143,20 +143,17 @@ def showSignUp():
     elif request.method=='GET':
         return render_template('signup.html')
 
-@app.route('/showLogin',methods=['GET','POST'])
+@app.route('/login',methods=['GET','POST'])
 def showLogin():
     if request.method=='POST':
         details=request.form
         fName=details['fname']
         lName=details['lname']
-
-        email='hallo'
+        email='xyz@zwq.de'
         
         sql = "INSERT INTO users(username, password, email) VALUES (%s, %s, %s)"
         val=(fName, lName, email)
-        
         cur=mydb.cursor()
-
         cur.execute(sql, val)
         mydb.commit()
         cur.close()
@@ -168,7 +165,7 @@ def showLogin():
 @app.route('/map')
 def showMap():
     return render_template('map.html')
-
+  
 @app.route('/showProfile')
 def showProfile():
     return render_template('profile.html')
@@ -179,8 +176,11 @@ def showDelivery():
 
 @app.route('/deliveries')
 def showDeliveries():
-    username = request.args.get('username')
-    print(username)
+    id = request.args.get('id')
+    print(id)
+    mycursor = mydb.cursor()
+    mycursor.execute("SELECT * FROM tbl_institutions") #Mquery MySQLDB
+    
     return render_template('deliveries.html')
 
 @app.route('/mapPoints') #retrieve map points in the database

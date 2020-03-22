@@ -98,7 +98,7 @@
                 json[i].gloves + " Paar Handschuhe und " +
                 json[i].masks + " Schutzmasken!";
             }
-            var link = "localhost:5000/delivery?id=" + json[i].id;
+            var link = "http://localhost:5000/delivery?id=" + json[i].id;
             var btn = document.createElement('button');
             btn.textContent = 'JETZT HELFEN!';
             btn.addEventListener("click", function () {
