@@ -143,20 +143,17 @@ def showSignUp():
     elif request.method=='GET':
         return render_template('signup.html')
 
-@app.route('/showLogin',methods=['GET','POST'])
+@app.route('/login',methods=['GET','POST'])
 def showLogin():
     if request.method=='POST':
         details=request.form
         fName=details['fname']
         lName=details['lname']
-
-        email='hallo'
+        email='xyz@zwq.de'
         
         sql = "INSERT INTO users(username, password, email) VALUES (%s, %s, %s)"
         val=(fName, lName, email)
-        
         cur=mydb.cursor()
-
         cur.execute(sql, val)
         mydb.commit()
         cur.close()
@@ -169,27 +166,6 @@ def showLogin():
 def showMap():
     return render_template('map.html')
 
-@app.route('/mapPoints') #retrieve map points in the database
-def getMapPoints():
-    mycursor = mydb.cursor()
-
-    mycursor.execute("SELECT * FROM tbl_institutions")
-
-    myresult = mycursor.fetchall()
-    payload = []
-    content = {}
-    for result in myresult:
-       content = {'institutionid': result[0], 'name': result[1], 'type': result[2], 'address': result[3], 'contact': result[4], 'telephone': result[5], 'lat': result[6], 'lng': result[7]}
-       payload.append(content)
-       content = {}
-    return jsonify(payload)
-
-   # myresult = mycursor.fetchone() for just the first result
-    # jsonResults = json.dumps(myresult)
-
-  #  for x in myresult:
-   #     print(x)
-   # return ('test')
 
 @app.route('/showProfile')
 def showProfile():
@@ -197,8 +173,11 @@ def showProfile():
 
 @app.route('/deliveries')
 def showDeliveries():
-    username = request.args.get('username')
-    print(username)
+    id = request.args.get('id')
+    print(id)
+    mycursor = mydb.cursor()
+    mycursor.execute("SELECT * FROM tbl_institutions") #Mquery MySQLDB
+    
     return render_template('deliveries.html')
 
 @app.route('/mapPoints') #retrieve map points in the database
