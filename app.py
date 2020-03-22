@@ -157,9 +157,19 @@ def showMap():
 def showProfile():
     return render_template('profile.html')
 
-@app.route('/delivery')
+@app.route('/delivery', methods=['GET','POST'])
 def showDelivery():
-    return render_template('delivery.html')
+    if request.method == 'POST': 
+        beitrag="/static/img/green.png"
+        versand="/static/img/yellow.png"
+        welcometext="Vielen Dank für Ihre Spende!"
+        return render_template('delivery.html', beitrag=beitrag, versand=versand, welcometext=welcometext)
+
+    elif request.method=="GET":
+        versand="/static/img/red.png"
+        beitrag="/static/img/yellow.png"
+        welcometext="Jetzt Beitrag konfigurieren!"
+        return render_template('delivery.html', beitrag=beitrag, versand=versand, welcometext=welcometext)
 
 @app.route('/deliveries')
 def showDeliveries():
