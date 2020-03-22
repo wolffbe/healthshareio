@@ -74,33 +74,63 @@
             </div>
             <div class="col-md-4">
                 <h2>Statistiken</h2>
-                <b> Anzahl an Spender:</b>
+                <b> Anzahl an Spendern:</b>
                 <div> 47</div>
-                <b> Anzahl an medizinische Einrichtungen:</b>
+                <b> Anzahl an Empfängern:</b>
                 <div> 12</div>
                 <b> Bereits gespendete Masken:</b>
                 <div> 2560</div>
-                <b> Bereits gespendete Handschuhe (Pakete):</b>
+                <b> Bereits gespendete Paar Handschuhe:</b>
                 <div> 12340</div>
-                <b> Bereits gespendete Disinfektionsmittel (Liter):</b>
+                <b> Bereits gespendetes Desinfektionsmittel (in Liter):</b>
                 <div> 420</div>
             </div>
             <div class="col-md-4">
                 <h2>Bestenliste</h2>
-                <p>Folgende Unternemen haben am meisten gespendet:</p>
-                <img src="{{url_for('static', filename='img/vb_thumb.jpg')}}">
-                <b> Volksbank Hamburg:</b>
-                <div> Masken: 750 </div>
-                <div> Handschuhe: 200 </div>
-                <div> Desinfektionsmittel: 50 </div>
-                <img src="{{url_for('static', filename='img/ac_thumb.jpg')}}">
-                <b> Accenture:</b>
-                <div> Desinfektionsmittel: 275 </div>
-                <img src="{{url_for('static', filename='img/fx_thumb.jpg')}}">
-                <b> Finexity:</b>
-                <div> Masken: 100 </div>
-                <div> Handschuhe: 50 </div>
-                <div> Desinfektionsmittel: 50 </div>
+                <h5>Folgende Unternemen haben bisher am meisten gespendet:</h5>
+                <table>
+                    <tr>
+                        <th>Unternehmen</th>
+                        <th>
+                            <p style="color:white;">aa</p>
+                        </th>
+                        <th>Beitrag</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img src="{{url_for('static', filename='img/vb_thumb.jpg')}}">
+                            <b>Volksbank Hamburg</b>
+                        </td>
+                        <td></td>
+                        <td>
+                            <div> Masken: 750 </div>
+                            <div> Handschuhe: 200 </div>
+                            <div> Desinfektionsmittel: 50 </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img src="{{url_for('static', filename='img/ac_thumb.jpg')}}">
+                            <b>Accenture</b>
+                        </td>
+                        <td></td>
+                        <td>
+                            <div> Desinfektionsmittel: 275 </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img src="{{url_for('static', filename='img/fx_thumb.jpg')}}">
+                            <b>Finexity:</b>
+                        </td>
+                        <td></td>
+                        <td>
+                            <div> Masken: 100 </div>
+                            <div> Handschuhe: 50 </div>
+                            <div> Desinfektionsmittel: 50 </div>
+                        </td>
+                    </tr>
+                </table>
             </div>
         </div>
 </body>
