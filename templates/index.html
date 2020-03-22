@@ -1,48 +1,109 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
+  <head>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
-<head>
-  <title>Python Flask Bucket List App</title>
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-  <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
-  <link href="../static/css/signup.css" rel="stylesheet">
-  <script src="../static/js/jquery-1.11.2.js"></script>
-  <script src="../static/js/signup.js"></script>
-  <!--Stylesheet CSS-->
-  <link rel="stylesheet" href="/static/css/index.css">
-  <!--Bootstrap-->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-</head>
+      <!--Stylesheet CSS-->
 
-<body>
-  <header>
-    <div class="nav">
-      <ul>
-        <li><a href="#home">Anmelden</a></li>
-        <li><a href="#home">Sign Up</a></li>
-      </ul>
+    <link rel="stylesheet" href="/static/css/index1.css">
+
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-default" style="background-color:#ffbdbd; min-height: 70px; font-size: 20px;">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">
+            <img alt="Brand" src="/Logo-small.png">
+          </a>
+          <p class="navbar-text" style = "color: black;">Healthshare.io</p>
+        </div>
+    
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/Map" style = "color: black;"> Map</a></li>
+            <li><a href="/Signup" style = "color: black;"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+            <li><a href="/showLogin" style = "color: black;"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+          </ul>
+          <form class="navbar-form navbar-left">
+            	
+          </div>
+      </div> 
+    </nav>
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+      <div class="container">
+        <h1>Sharing is caring!</h1>
+        <p>Sind sie ein Unternehmen und wollen sie aktiv werden in den Kampf gegen Corona? Sie haben ein Lagerbestand an Hilfsmittel wie Masken, Einweghandschuh oder Disinfektionsmittel die sie nicht brauchen weil sie geschlossen haben? Dann sind sie hier richtig. Wir verbinden sie mit medizinische Einrichtungen die drngend ihre Spenden benötigen. </p>
+        <p><a class="btn btn-primary btn-lg" href="#" role="button">Sign Up Now &raquo;</a></p>
+      </div>
     </div>
-  </header>
-  <main>
+
     <div class="container">
-      <div class="map">
-        <h1>Analytics</h1>
-        <p>Hier kommt die Map rein</p>
+      <!-- Example row of columns -->
+      <div class="row">
+        <div class="col-md-4">
+          <h2>Heading</h2>
+          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+          <h2>Heading</h2>
+          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+       </div>
+        <div class="col-md-4">
+          <h2>Heading</h2>
+          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+        </div>
       </div>
-      <div class="leaderboard">
-        <h1>Leaderboard</h1>
-        <p>Top 10 Anbieter</p>
-      </div>
-    </div>
-    <div class="container-Submit">
-      <p>Willst du mitmachen?</p>
-      <button type="submit">Sign Up</button>
-    </div>
-  </main>
 
-</body>
+      <hr>
 
+      <footer>
+        <p>&copy; 2020 WirVsVrus Hackathon</p>
+      </footer>
+            
+        <!--   <div class="form-group">
+              <input type="text" class="form-control" placeholder="Search">
+            </div>
+            <button type="submit" class="btn btn-default">Submit</button>
+          </form> --> 
+         <!-- <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">Link</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+              </ul> 
+            </li>
+          </ul> -->
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+
+
+  
+  </body>
 </html>
