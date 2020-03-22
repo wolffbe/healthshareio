@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <!--Stylesheet CSS-->
+
+    <link rel="stylesheet" href="/static/css/index1.css">
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-default" style="background-color:#ffbdbd; min-height: 70px; font-size: 20px;">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">
+                    <img src="{{url_for('static', filename='img/logo-small.png')}}"/>
+                </a>
+                <p class="navbar-text" style="color: black;">Healthshare.io</p>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/Map" style="color: black;"> Map</a></li>
+                    <li><a href="/Signup" style="color: black;"><span class="glyphicon glyphicon-user"></span> Sign
+                            Up</a></li>
+                    <li><a href="/showLogin" style="color: black;"><span class="glyphicon glyphicon-log-in"></span>
+                            Login</a></li>
+                </ul>
+                <form class="navbar-form navbar-left">
+
+            </div>
+        </div>
+    </nav>
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+        <div class="container">
+            <h1>Sharing is caring!</h1>
+            <p>Sind sie ein Unternehmen und wollen sie aktiv werden in den Kampf gegen Corona? Sie haben ein
+                Lagerbestand an Hilfsmittel wie Masken, Einweghandschuh oder Disinfektionsmittel die sie nicht brauchen
+                weil sie geschlossen haben? Dann sind sie hier richtig. Wir verbinden sie mit medizinische Einrichtungen
+                die drngend ihre Spenden benötigen. </p>
+            <p><a class="btn btn-primary btn-lg" href="#" role="button">Sign Up Now &raquo;</a></p>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Example row of columns -->
+        <div class="row">
+            <div class="col-md-4">
+                <h2>Beitrag</h2>
+                <img src="{{url_for('static', filename='red.png')}}" height="60"/>
+            </div>
+            <div class="col-md-4">
+                <h2>Versand</h2>
+                <img src="{{url_for('static', filename='red.png')}}" height="60"/>
+            </div>
+            <div class="col-md-4">
+                <h2>Erhalt</h2>
+                <img src="{{url_for('static', filename='red.png')}}" height="60"/>
+            </div>
+            <div class="col-md-4">
+                <h2>Spende</h2>
+                <img src="{{url_for('static', filename='red.png')}}" height="60"/>
+            </div>
+        </div>
+    </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+    </nav>
+
+
+
+</body>
+
+</html>

@@ -173,6 +173,10 @@ def showMap():
 def showProfile():
     return render_template('profile.html')
 
+@app.route('/delivery')
+def showDelivery():
+    return render_template('delivery.html')
+
 @app.route('/deliveries')
 def showDeliveries():
     username = request.args.get('username')
