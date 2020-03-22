@@ -1,17 +1,19 @@
 from flask import Flask, render_template, json, request
 
 from werkzeug.security import generate_password_hash, check_password_hash
+import requests
+from flask_restful import Resource, Api
+from flask_cors import CORS
+import requests
 
 
 app = Flask(__name__)
-
-
 
 @app.route('/')
 def main():
     return render_template('index.html')
 
-@app.route('/showSignup')
+@app.route('/showSignUp')
 def showSignUp():
     return render_template('signup.html')
 

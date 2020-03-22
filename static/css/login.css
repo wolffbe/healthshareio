@@ -34,10 +34,43 @@ form {
     height: 50vh;
     background-color: #FFBDBD;
     border-radius: 60px 0px 0px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 15vh;
+}
+
+.nav {
+    height: 90vh;
+}
+
+.nav ul {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+}
+
+.nav ul li a {
+    text-decoration: none;
+    color: #F1C9FF;
+    font-size: 20px;
+}
+
+.title {
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.title h1 {
+    font-size: 3rem;
+    color: #FFBDBD;
 }
 
 .form-row {
-    height: 50vh;
+    height: 70vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -57,6 +90,13 @@ form {
 }
 
 .button button {
+}
+
+.button button {
+    background-color: #FFBDBD;
+}
+
+.button button:hover {
     background-color: #E1F7D5;
 
 }
