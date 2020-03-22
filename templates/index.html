@@ -18,7 +18,7 @@
 
   <body>
 
-    <nav class="navbar navbar-default" style="background-color:#ffbdbd; min-height: 70px; font-size: 20px;">
+    <nav class="navbar navbar-default" style="background-color:#ffbdbd; min-height: 70px; font-size: 20px; margin-bottom:0px;">
       <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -29,7 +29,7 @@
             <span class="icon-bar"></span>
           </button>
           <a class="navbar-brand" href="/">
-            <img alt="Brand" src="/Logo-small.png">
+            <img alt= "Brand" src="{{url_for('static', filename='img/logo-green-small.png')}}" />
           </a>
           <p class="navbar-text" style = "color: black;">Healthshare.io</p>
         </div>
@@ -37,8 +37,8 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="/Map" style = "color: black;"> Map</a></li>
-            <li><a href="/Signup" style = "color: black;"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+            <li><a href="/map" style = "color: black;"> Map</a></li>
+            <li><a href="/signup" style = "color: black;"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
             <li><a href="/showLogin" style = "color: black;"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
           </ul>
           <form class="navbar-form navbar-left">
@@ -51,7 +51,7 @@
       <div class="container">
         <h1>Sharing is caring!</h1>
         <p>Sind sie ein Unternehmen und wollen sie aktiv werden in den Kampf gegen Corona? Sie haben ein Lagerbestand an Hilfsmittel wie Masken, Einweghandschuh oder Disinfektionsmittel die sie nicht brauchen weil sie geschlossen haben? Dann sind sie hier richtig. Wir verbinden sie mit medizinische Einrichtungen die drngend ihre Spenden benötigen. </p>
-        <p><a class="btn btn-primary btn-lg" href="#" role="button">Sign Up Now &raquo;</a></p>
+        <p><a class="btn btn-primary btn-lg" href="/Signup" role="button">Spenden &raquo;</a></p>
       </div>
     </div>
 
@@ -59,19 +59,29 @@
       <!-- Example row of columns -->
       <div class="row">
         <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+          <h2>Einrichtungen</h2>
+          <a href="/map">
+          <img src="{{url_for('static', filename='img/Hamburg.jpg')}}" style = "width: 100%;"></a>
+          <!--<img src="https://developers.google.com/maps/documentation/android-sdk/images/zoom-level-14.png"></a> -->
+          
         </div>
         <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+          <h2>Statistiken</h2>
+          <b> Anzahl an Spender:</b> <div> 47</div>
+          <b> Anzahl an medizinische Einrichtungen:</b> <div> 12</div>
+          <b> Bereits gespendete Masken:</b> <div> 2560</div>
+          <b> Bereits gespendete Handschuhe (Pakete):</b> <div> 12340</div>
+          <b> Bereits gespendete Disinfektionsmittel (Liter):</b> <div> 420</div>
        </div>
         <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+          <h2>Leaderboard</h2>
+          <p>Folgende Unternemen haben am meisten gespendet:</p>
+          <img src="{{url_for('static', filename='img/vb_thumb.jpg')}}">
+          <b> Volsbank Hamburg:</b> <div> Masken: 750 </div> <div> Handschuhe: 200 </div> <div> Disinfektionsmittel: 50 </div>
+          <img src="{{url_for('static', filename='img/ac_thumb.jpg')}}">
+          <b> Accenture:</b> <div> Disinfektionsmittel: 275 </div>
+          <img src="{{url_for('static', filename='img/fx_thumb.jpg')}}">
+          <b> Finexity:</b> <div> Masken: 100 </div> <div> Handschuhe: 50 </div> <div> Disinfektionsmittel: 50 </div>
         </div>
       </div>
 
@@ -81,29 +91,6 @@
         <p>&copy; 2020 WirVsVrus Hackathon</p>
       </footer>
             
-        <!--   <div class="form-group">
-              <input type="text" class="form-control" placeholder="Search">
-            </div>
-            <button type="submit" class="btn btn-default">Submit</button>
-          </form> --> 
-         <!-- <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Link</a></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="#">Separated link</a></li>
-              </ul> 
-            </li>
-          </ul> -->
-        </div><!-- /.navbar-collapse -->
-      </div><!-- /.container-fluid -->
-    </nav>
-
-
-  
+   
   </body>
 </html>
