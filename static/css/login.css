@@ -10,11 +10,9 @@ header {
     border-bottom: 3px solid #FFBDBD;
 }
 
-
 .nav-link {
     color: black;
 }
-
 
 .title {
     height: 15vh;
@@ -22,7 +20,6 @@ header {
     justify-content: center;
     align-items: center;
     background-color: white;
-
 }
 
 .title h1 {
@@ -90,15 +87,11 @@ form {
 }
 
 .button button {
-}
-
-.button button {
     background-color: #FFBDBD;
 }
 
 .button button:hover {
     background-color: #E1F7D5;
-
 }
 
 .button button:hover {

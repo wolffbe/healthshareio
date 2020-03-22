@@ -18,8 +18,6 @@ The protoype is built with Bootstrap, runs on Flask and persists data in a MySQL
 
 ## Run
 
-
-
 ### Run in Flask
 
 Requirements:
@@ -30,9 +28,9 @@ python app.py
 ``` 
 The web app is accesible via `localhost:5000`.
 
-### Use of MySQL database
+#### Use of MySQL database
 
-In the folder "Database" a ".sql-File" can be found. This can be used to build up the same database as we used on any SQL server. This can be done by using the command promt similar to this: `mysql -u username -p dbname < db.sql` Make sure that you create a database before that.
+In the folder db, a .sql file can be found. This can be used to build up the same database as we used on any SQL server. This can be done by using the command prompt similar to this: `mysql -u username -p dbname < db.sql` Make sure that you create a database before that.
 
 The database has the following tables: tbl_institutions, tbl_demand, tbl_supply, tbl_deliveries. 
 

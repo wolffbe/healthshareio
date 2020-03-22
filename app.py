@@ -6,10 +6,10 @@ from flask_cors import CORS, cross_origin
 
 app = Flask(__name__)
 mydb = mysql.connector.connect(
-        host=,
-        user=,
-        passwd=, 
-        database =
+        host="INSERT_HOST",
+        user="INSERT_USER",
+        passwd="INSERT_PW", 
+        database ="INSERT_DB"
     )       
 
 print(mydb)
