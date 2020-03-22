@@ -10,6 +10,8 @@ Via our web app, companies gain insight in the current market demand, understand
 
 Healthshare allows companies to sign up on our website, choose a medical institution they want to support, choose how much equipment they want to donate and allows them to track their donation.
 
+![homepage](./static/img/home.png)
+
 ## Architecture
 
 The protoype is built with Bootstrap, runs on Flask and persists data in a MySQL database. The map is provided by the Google Maps Platform. Containerization using Docker is possible.
@@ -42,3 +44,5 @@ The web app is accesible via `localhost:5000`.
 ## License
 
 Open-source. However, we used company logos that might be subject to copyright and make use of the Google Maps Platform.
+
+The companies behind the logos were and are not involved in the development of this product.
