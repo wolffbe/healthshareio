@@ -32,8 +32,6 @@
                 </a>
 
                 <p class="navbar-text" style="color: black; font-size: xx-large; font-weight: 700;">Healthshare.io</p>
-
-
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -44,7 +42,7 @@
                     </li>
                     <li style="margin-top: 13px;"><span class="glyphicon glyphicon-user"></span> Hallo, Satoshi Nakamoto</li>
                 </ul>
-                <form class="navbar-form navbar-left">
+
 
             </div>
         </div>
@@ -63,9 +61,11 @@
     padding-bottom: 50px;
     padding-left: 200px;">
         <h2>
-            <h3 align="center">Wie viel können Sie beitragen?</h3><br>
+
+            <h3 align="center" style="font-weight: bolder;">{{welcometext}}</h3><br>
+
         </h2>
-        <form>
+        <form action="" method="POST">
             <div class="form-group">
                 <label for="disinfectant">
                     <h4>Desinfektionsmittel:</h4>
@@ -94,13 +94,18 @@
             <div class="col-md-4">
                 <h2 align="center">Beitrag</h2>
                 <div class="traffic_light">
-                    <img src="{{url_for('static', filename='img/yellow.png')}}" height="100px" style="display:block; margin-left: auto; margin-right: auto;" />
+
+                    <img src="{{beitrag}}" height="100px" style="display:block; margin-left: auto; margin-right: auto;" />
+
+
                 </div>
             </div>
             <div class="col-md-4">
                 <h2 align="center">Versand</h2>
                 <div class="traffic_light">
-                    <img src="{{url_for('static', filename='img/red.png')}}" height="100px" style="display:block; margin-left: auto; margin-right: auto;" />
+                    <img src="{{versand}}" height="100px" style="display:block; margin-left: auto; margin-right: auto;" />
+
+
                 </div>
             </div>
             <div class="col-md-4">
