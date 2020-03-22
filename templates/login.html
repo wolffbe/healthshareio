@@ -2,61 +2,70 @@
 <html lang="en">
 
 <head>
-  <title>Python Flask Bucket List App</title>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
-  <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
-  <link href="../static/css/signup.css" rel="stylesheet">
-  <script src="../static/js/jquery-1.11.2.js"></script>
-  <script src="../static/js/signup.js"></script>
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
   <!--Stylesheet CSS-->
-
-
-  <link rel="stylesheet" href="/static/css/login.css">
-  <!--Bootstrap-->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="/static/css/index1.css">
 </head>
 
 <body>
-  <header>
-    <ul class="nav justify-content-end">
-      <li class="nav-item">
-        <a class="nav-link" href="#">Map</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Aufträge</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link active" href="#">Anmelden/Sign Up</a>
-      </li>
-    </ul>
-  </header>
-  <main>
-    <div class="title">
-      <h1>Login</h1>
-    </div>
-    <form method="POST" action="signup.html">
-      <div class="form-row">
-        <div class="form-group col-lg-3 col-md-3 col-sm-5">
-          <label for="inputEmail">Email</label>
-          <input type="text" class="form-control" name="inputEmail" id="inputEmail"
-            placeholder="Bitte gib deine E-mail ein">
-        </div>
-        <div class="form-group col-lg-3 col-md-3 col-sm-5">
-          <label for="inputPassword">Passwort</label>
-          <input type="password" class="form-control" name="inputPassword" id="inputPassword"
-            placeholder="Bitte gib dein Passwort ein">
-        </div>
-        <div class="button">
-          <button type="submit" class="btn">Login</button>
-        </div>
-      </div>
-      <div class="button">
-        <button type="submit" class="btn btn-lg">Login</button>
-      </div>
-    </form>
 
-  </main>
+  <nav class="navbar navbar-default" style="background-color:#ffbdbd; min-height: 70px; font-size: 20px;">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+          data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">
+          <img src="{{url_for('static', filename='img/logo-small.png')}}" />
+        </a>
+        <p class="navbar-text" style="color: black;">Healthshare.io</p>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="/Map" style="color: black;"> Map</a></li>
+          <li><a href="/Signup" style="color: black;"><span class="glyphicon glyphicon-user"></span> Sign
+              Up</a></li>
+        </ul>
+        <form class="navbar-form navbar-left">
+
+      </div>
+
+      <div style="
+    padding-right: 200px;
+    padding-bottom: 30px;
+    padding-left: 200px;">
+        <h2>
+          <h3 align="center">Login</h3><br>
+        </h2>
+        <form>
+          <div class="form-group">
+            <input type="user" class="form-control" id="user" placeholder="Benutzername" name="user">
+          </div>
+          <div class="form-group">
+            <input type="pwd" class="form-control" id="gloves" placeholder="Passwort" name="pwd">
+          </div>
+          <p>Passwort vergessen?</p>
+          <button type="submit" class="btn btn-default">Login</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+  </nav>
 </body>
-  </html>
+
+</html>
