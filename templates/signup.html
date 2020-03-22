@@ -2,97 +2,92 @@
 <html lang="en">
 
 <head>
-  <title>Python Flask Bucket List App</title>
-  <link href="../static/css/signup.css" rel="stylesheet">
-  <script src="../static/js/jquery-1.11.2.js"></script>
-  <script src="../static/js/signUp.js"></script>
-  <!--Stylesheet CSS-->
-  <link rel="stylesheet" href="/static/css/signup.css">
-  <!--Bootstrap-->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <title>Python Flask Bucket List App</title>
+    <link href="../static/css/signup.css" rel="stylesheet">
+    <script src="../static/js/jquery-1.11.2.js"></script>
+    <script src="../static/js/signUp.js"></script>
+    <!--Stylesheet CSS-->
+    <link rel="stylesheet" href="/static/css/signup.css">
+    <!--Bootstrap-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
 </head>
 
 <body>
-  <header>
-    <nav class="navbar navbar-default" style="background-color: rgb(199, 245, 245); max-height: 90px; font-size: 20px; align-content: center;margin-bottom: 0px;">
-      <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+    <header>
+        <nav class="navbar navbar-default" style="background-color: rgb(199, 245, 245); max-height: 90px; font-size: 20px; align-content: center;margin-bottom: 0px;">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/" >
-            <img alt="Brand" src="/static/Logo-small.png">
-            
-            
-          </a>
-  
-          <p class="navbar-text" style = "color: black; font-size: xx-large; font-weight: 700;">Healthshare.io</p>
+                    <a class="navbar-brand" href="/">
+                        <img alt="Brand" src="/static/Logo-small.png">
 
-        </div>
-    
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav navbar-right" style="margin-top: 10px;">
-            <li><a href="/map" style = "color: black;"> <span class="glyphicon glyphicon-map-marker"></span> Map</a></li>
-            <li><a href="/signup" style = "color: black;"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-          </ul>
-              
-          </div>
-      </div> 
-    </nav>
-  </header>
-  <main>
-    <div class="title" >
-      <h1 style="color: black;">Sign Up</h1>
-    </div>
 
-    <form action="http://localhost:5000/signup" method="post">
-      <div class="form-group row">
-        <label for="inputName" class="col-sm-2 col-form-label">Name</label>
-        <div class="col-lg-3">
-          <input type="text" class="form-control" name="inputName" id="inputName"
-            placeholder="Bitte gib deinen Namen ein">
-        </div>
-      </div>
-      <div class="form-group row">
-        <label for="inputInstitution" class="col-sm-2 col-form-label">Institution</label>
-        <div class="col-lg-3">
-          <select id="inputInstitution" class="form-control" name="inputInstitution">
+                    </a>
+
+                    <p class="navbar-text" style="color: black; font-size: xx-large; font-weight: 700;">Healthshare.io</p>
+
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right" style="margin-top: 10px;">
+                        <li>
+                            <a href="/map" style="color: black;"> <span class="glyphicon glyphicon-map-marker"></span> Karte</a>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <b><h2 align="center" style="color: black; padding-bottom: 10px; padding-top: 5px;">Registrierung</h2></b>
+
+        <form action="http://localhost:5000/signup" method="post">
+            <div class="form-group row">
+                <label for="inputName" class="col-sm-2 col-form-label">Name</label>
+                <div class="col-lg-3">
+                    <input type="text" class="form-control" name="inputName" id="inputName" placeholder="Bitte gib deinen Namen ein">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputInstitution" class="col-sm-2 col-form-label">Institution</label>
+                <div class="col-lg-3">
+                    <select id="inputInstitution" class="form-control" name="inputInstitution">
             <option selected>Bitte auswählen</option>
             <option>Medizinische Einrichtung</option>
             <option>Unternehmen</option>
           </select> </div>
-      </div>
-      <div class="form-group row">
-        <label for="inputAdress" class="col-sm-2 col-form-label">Adresse</label>
-        <div class="col-lg-3">
-          <input type="text" class="form-control" name="inputAdress" id="inputAdress"
-            placeholder="Bitte gib die Adresse ein">
-        </div>
-      </div>
-      <div class="form-group row">
-        <label for="inputAnsprechpartner" class="col-sm-2 col-form-label">Ansprechpartner</label>
-        <div class="col-lg-3">
-          <input type="text" class="form-control" name="inputAnsprechpartner" id="inputAnsprechpartner"
-            placeholder="Bitte gib uns einen Ansprechpartner">
-        </div>
-      </div>
-      <div class="form-group row">
-        <label for="inputTelephone" class="col-sm-2 col-form-label">Telefonnummer</label>
-        <div class="col-lg-3">
-          <input type="text" class="form-control" name="inputTelephone" id="inputTelephone"
-            placeholder="Bitte gib deine Telefonnumer ein">
-        </div>
-      </div>
-      <div class="form-group row">
-        <label for="inputNeed" class="col-sm-2 col-form-label">Ich brauche</label>
-        <div class="col-lg-3">
-          <select id="inputNeed" name="inputNeed" class="form-control">
+            </div>
+            <div class="form-group row">
+                <label for="inputAdress" class="col-sm-2 col-form-label">Adresse</label>
+                <div class="col-lg-3">
+                    <input type="text" class="form-control" name="inputAdress" id="inputAdress" placeholder="Bitte gib die Adresse ein">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputAnsprechpartner" class="col-sm-2 col-form-label">Ansprechpartner</label>
+                <div class="col-lg-3">
+                    <input type="text" class="form-control" name="inputAnsprechpartner" id="inputAnsprechpartner" placeholder="Bitte gib uns einen Ansprechpartner">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputTelephone" class="col-sm-2 col-form-label">Telefonnummer</label>
+                <div class="col-lg-3">
+                    <input type="text" class="form-control" name="inputTelephone" id="inputTelephone" placeholder="Bitte gib deine Telefonnumer ein">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputNeed" class="col-sm-2 col-form-label">Ich brauche</label>
+                <div class="col-lg-3">
+                    <select id="inputNeed" name="inputNeed" class="form-control">
             <option selected>Bitte auswählen</option>
 
             <option>Desinfektionsmittel</option>
@@ -100,18 +95,17 @@
             <option>Masken</option>
             <option>Handschuhe</option>
           </select></div>
-      </div>
-      <div class="form-group row">
-        <label for="inputAnzahlNeed" class=" col-sm-2 col-form-label">Anzahl</label>
-        <div class="col-lg-3">
-          <input type="text" class="form-control" name="inputAnzahlNeed" id="inputAnzahlNeed"
-            placeholder="Bitte gib die Anzahl an">
-        </div>
-      </div>
-      <div class="form-group row">
-        <label for="inputGive" class="col-sm-2 col-form-label">Ich gebe</label>
-        <div class="col-lg-3">
-          <select id="inputGive" name="inputGive" class="form-control">
+            </div>
+            <div class="form-group row">
+                <label for="inputAnzahlNeed" class=" col-sm-2 col-form-label">Anzahl</label>
+                <div class="col-lg-3">
+                    <input type="text" class="form-control" name="inputAnzahlNeed" id="inputAnzahlNeed" placeholder="Bitte gib die Anzahl an">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputGive" class="col-sm-2 col-form-label">Ich gebe</label>
+                <div class="col-lg-3">
+                    <select id="inputGive" name="inputGive" class="form-control">
             <option selected>Bitte auswählen</option>
 
             <option>Desinfektionsmittel</option>
@@ -119,19 +113,18 @@
             <option>Masken</option>
             <option>Handschuhe</option>
           </select></div>
-      </div>
-      <div class="form-group row">
-        <label for="inputAnzahlGive" class=" col-sm-2 col-form-label">Anzahl</label>
-        <div class="col-lg-3">
-          <input type="text" name="inputAnzahlGive" class="form-control" id="inputAnzahlGive"
-            placeholder="Bitte gib die Anzahl an">
-        </div>
-      </div>
-      <div class="button">
-        <button type="submit" class="btn">Auftragssuche</button>
-      </div>
-    </form>
-  </main>
+            </div>
+            <div class="form-group row">
+                <label for="inputAnzahlGive" class=" col-sm-2 col-form-label">Anzahl</label>
+                <div class="col-lg-3">
+                    <input type="text" name="inputAnzahlGive" class="form-control" id="inputAnzahlGive" placeholder="Bitte gib die Anzahl an">
+                </div>
+            </div>
+            <div class="button">
+                <button type="submit" class="btn">Auftragssuche</button>
+            </div>
+        </form>
+    </main>
 </body>
 
 
