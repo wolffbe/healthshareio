@@ -6,6 +6,34 @@
 }
 
 header {
+    height: 7;
+    border-bottom: 3px solid #FFBDBD;
+}
+
+
+.nav-link {
+    color: black;
+}
+
+
+.title {
+    height: 15vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+
+}
+
+.title h1 {
+    background-color: white;
+    color: #FFBDBD;
+}
+
+form {
+    height: 50vh;
+    background-color: #FFBDBD;
+    border-radius: 60px 0px 0px 0px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -51,6 +79,17 @@ header {
 
 .button {
     border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn {
+    border: none;
+    transform: translateY(-20px);
+}
+
+.button button {
 }
 
 .button button {
@@ -59,4 +98,9 @@ header {
 
 .button button:hover {
     background-color: #E1F7D5;
+
+}
+
+.button button:hover {
+    background-color: whitesmoke;
 }
