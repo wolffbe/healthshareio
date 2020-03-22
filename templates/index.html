@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
@@ -10,11 +11,12 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-      <!--Stylesheet CSS-->
+    <!--Stylesheet CSS-->
 
     <link rel="stylesheet" href="/static/css/index1.css">
 
-  </head>
+</head>
+
 
   <body>
  
@@ -37,65 +39,76 @@
           <p class="navbar-text" style = "color: black; font-size: xx-large; font-weight: 700;">Healthshare.io</p>
 
           
+
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right" style="margin-top: 10px;">
+                    <li>
+                        <a href="/map" style="color: black;"> <span class="glyphicon glyphicon-map-marker"></span> Map</a>
+                    </li>
+                    <li><a href="/signup" style="color: black;"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                    <li><a href="/login" style="color: black;"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                </ul>
+               
+
+            </div>
+
         </div>
-    
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav navbar-right" style="margin-top: 10px;">
-            <li><a href="/map" style = "color: black;"> <span class="glyphicon glyphicon-map-marker"></span> Map</a></li>
-            <li><a href="/signup" style = "color: black;"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-            <li><a href="/login" style = "color: black;"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-          </ul>
-          <form class="navbar-form navbar-left">
-            	
-          </div>
-      </div> 
     </nav>
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
-      <div class="container">
-        <h1>Sharing is caring!</h1>
-        <p>Sind Sie ein Unternehmen und wollen Sie aktiv werden im Kampf gegen Corona? Sie haben einen Lagerbestand an Hilfsmitteln wie Masken, Einweghandschuhen oder Desinfektionsmitteln, die Sie zur Zeit nicht nutzen können? Dann sind Sie hier richtig. Wir verbinden Sie mit medizinischen Einrichtungen, die Ihre Spenden dringend benötigen. </p>
-        <p><a class="btn btn-primary btn-lg" href="/signup" role="button">Sign Up Now &raquo;</a></p>
-      </div>
+        <div class="container">
+            <h1>Sharing is caring!</h1>
+            <p>Sind Sie ein Unternehmen und wollen im Kampf gegen Corona aktiv werden? Sie haben einen Lagerbestand an Hilfsmitteln wie z.B. Masken, Einweghandschuhen oder Desinfektionsmitteln, den Sie zur Zeit nicht nutzen? Dann sind Sie hier genau richtig!
+                Wir verbinden Sie mit medizinischen Einrichtungen, die Ihre Spenden dringend benötigen. </p>
+            <p><a class="btn btn-primary btn-lg" href="/signup" role="button">Jetzt mitmachen! &raquo;</a></p>
+        </div>
     </div>
 
     <div class="container">
-      <!-- Example row of columns -->
-      <div class="row">
-        <div class="col-md-4">
-          <h2>Einrichtungen</h2>
-          <a href="/map">
-          <img src="{{url_for('static', filename='img/Hamburg.jpg')}}" style = "width: 100%;"></a>
-          <!--<img src="https://developers.google.com/maps/documentation/android-sdk/images/zoom-level-14.png"></a> -->
-          
-        </div>
-        <div class="col-md-4">
-          <h2>Statistiken</h2>
-          <b> Anzahl an Spender:</b> <div> 47</div>
-          <b> Anzahl an medizinische Einrichtungen:</b> <div> 12</div>
-          <b> Bereits gespendete Masken:</b> <div> 2560</div>
-          <b> Bereits gespendete Handschuhe (Pakete):</b> <div> 12340</div>
-          <b> Bereits gespendete Disinfektionsmittel (Liter):</b> <div> 420</div>
-       </div>
-        <div class="col-md-4">
-          <h2>Leaderboard</h2>
-          <p>Folgende Unternemen haben am meisten gespendet:</p>
-          <img src="{{url_for('static', filename='img/vb_thumb.jpg')}}">
-          <b> Volsbank Hamburg:</b> <div> Masken: 750 </div> <div> Handschuhe: 200 </div> <div> Disinfektionsmittel: 50 </div>
-          <img src="{{url_for('static', filename='img/ac_thumb.jpg')}}">
-          <b> Accenture:</b> <div> Disinfektionsmittel: 275 </div>
-          <img src="{{url_for('static', filename='img/fx_thumb.jpg')}}">
-          <b> Finexity:</b> <div> Masken: 100 </div> <div> Handschuhe: 50 </div> <div> Disinfektionsmittel: 50 </div>
-        </div>
-      </div>
+        <!-- Example row of columns -->
+        <div class="row">
+            <div class="col-md-4">
+                <h2>Einrichtungen</h2>
+                <a href="/map">
+                    <img src="{{url_for('static', filename='img/Hamburg.JPG')}}" width=100%>
+                    <!--<img src="https://developers.google.com/maps/documentation/android-sdk/images/zoom-level-14.png"></a> -->
+                </a>
 
-      <hr>
+            </div>
+            <div class="col-md-4">
+                <h2>Statistiken</h2>
+                <b> Anzahl an Spender:</b>
+                <div> 47</div>
+                <b> Anzahl an medizinische Einrichtungen:</b>
+                <div> 12</div>
+                <b> Bereits gespendete Masken:</b>
+                <div> 2560</div>
+                <b> Bereits gespendete Handschuhe (Pakete):</b>
+                <div> 12340</div>
+                <b> Bereits gespendete Disinfektionsmittel (Liter):</b>
+                <div> 420</div>
+            </div>
+            <div class="col-md-4">
+                <h2>Bestenliste</h2>
+                <p>Folgende Unternemen haben am meisten gespendet:</p>
+                <img src="{{url_for('static', filename='img/vb_thumb.jpg')}}">
+                <b> Volksbank Hamburg:</b>
+                <div> Masken: 750 </div>
+                <div> Handschuhe: 200 </div>
+                <div> Desinfektionsmittel: 50 </div>
+                <img src="{{url_for('static', filename='img/ac_thumb.jpg')}}">
+                <b> Accenture:</b>
+                <div> Desinfektionsmittel: 275 </div>
+                <img src="{{url_for('static', filename='img/fx_thumb.jpg')}}">
+                <b> Finexity:</b>
+                <div> Masken: 100 </div>
+                <div> Handschuhe: 50 </div>
+                <div> Desinfektionsmittel: 50 </div>
+            </div>
+        </div>
+</body>
 
-      <footer>
-        <p>&copy; 2020 WirVsVrus Hackathon</p>
-      </footer>
-            
-   
-  </body>
 </html>

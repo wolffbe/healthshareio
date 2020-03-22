@@ -153,7 +153,7 @@ def showLogin():
 def showMap():
     return render_template('map.html')
   
-@app.route('/showProfile')
+@app.route('/profile')
 def showProfile():
     return render_template('profile.html')
 
