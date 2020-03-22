@@ -157,8 +157,10 @@ def showMap():
 def showProfile():
     return render_template('profile.html')
 
-@app.route('/showDeliveries')
+@app.route('/deliveries')
 def showDeliveries():
+    username = request.args.get('username')
+    print(username)
     return render_template('deliveries.html')
 
 @app.route('/mapPoints') #retrieve map points in the database
