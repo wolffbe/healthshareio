@@ -27,25 +27,22 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
+                <a class="navbar-brand" href="/">
+                    <img alt="Brand" src="{{url_for('static', filename='img/logo-small.png')}}">
+                </a>
 
-            <a class="navbar-brand" href="/" >
-              <img alt="Brand" src="/static/Logo-small.png">
-              
-              
-            </a>
-  
-            <p class="navbar-text" style = "color: black; font-size: xx-large; font-weight: 700;">Healthshare.io</p>
-  
-            
-          </div>
-      
-          <!-- Collect the nav links, forms, and other content for toggling -->
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav navbar-right" style="margin-top: 10px;">
-              <li><a href="/map" style = "color: black;"> <span class="glyphicon glyphicon-map-marker"></span> Map</a></li>
-              <li style="margin-top: 13px;"><span class="glyphicon glyphicon-user"></span> Hallo, Satoshi Nakamoto</li>
-          </ul>
-                  
+                <p class="navbar-text" style="color: black; font-size: xx-large; font-weight: 700;">Healthshare.io</p>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right" style="margin-top: 10px;">
+                    <li>
+                        <a href="/map" style="color: black;"> <span class="glyphicon glyphicon-map-marker"></span> Map</a>
+                    </li>
+                    <li style="margin-top: 13px;"><span class="glyphicon glyphicon-user"></span> Hallo, Satoshi Nakamoto</li>
+                </ul>
+
 
             </div>
         </div>
@@ -55,7 +52,7 @@
     padding-bottom: 10px;
     padding-top: 30px;">
         <div>
-            <h3 align="center">Danke, dass Sie das Asklepios Klinikum St. Georg unterstützen möchten! Es werden 100 Liter Desinfektionsmittel, 100 Paar Handschuhe und 260 Schutzmasken benötigt!</h3 align="center">
+            <h3 align="center">Danke, dass Sie das Asklepios Krankenhaus St. Georg unterstützen möchten! Es werden 100 Liter Desinfektionsmittel, 100 Paar Handschuhe und 260 Schutzmasken benötigt!</h3 align="center">
         </div>
     </div>
 
@@ -68,7 +65,7 @@
             <h3 align="center" style="font-weight: bolder;">{{welcometext}}</h3><br>
 
         </h2>
-        <form action= "" method="POST">
+        <form action="" method="POST">
             <div class="form-group">
                 <label for="disinfectant">
                     <h4>Desinfektionsmittel:</h4>
@@ -100,7 +97,7 @@
 
                     <img src="{{beitrag}}" height="100px" style="display:block; margin-left: auto; margin-right: auto;" />
 
-                    
+
                 </div>
             </div>
             <div class="col-md-4">

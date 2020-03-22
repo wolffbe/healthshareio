@@ -2,78 +2,78 @@
 <html lang="en">
 
 <head>
-  <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
-  <link href="../static/css/signup.css" rel="stylesheet">
-  <script src="../static/js/jquery-1.11.2.js"></script>
-  <script src="../static/js/signup.js"></script>
-  <!--Stylesheet CSS-->
+    <link href="../static/css/signup.css" rel="stylesheet">
+    <script src="../static/js/jquery-1.11.2.js"></script>
+    <script src="../static/js/signup.js"></script>
+    <!--Stylesheet CSS-->
 
-  <!-- jQuery library -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <!-- Latest compiled JavaScript -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-<body>
-  <header>
-    <nav class="navbar navbar-default" style="background-color: rgb(199, 245, 245); max-height: 90px; font-size: 20px; align-content: center;margin-bottom: 0px;">
-      <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+    <body>
+        <header>
+            <nav class="navbar navbar-default" style="background-color: rgb(199, 245, 245); max-height: 90px; font-size: 20px; align-content: center;margin-bottom: 0px;">
+                <div class="container-fluid">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/" >
-            <img alt="Brand" src="/static/Logo-small.png">
-            
-            
-          </a>
+                        <a class="navbar-brand" href="/">
+                            <img alt="Brand" src="{{url_for('static', filename='img/logo-small.png')}}">
+                        </a>
 
-          <p class="navbar-text" style = "color: black; font-size: xx-large; font-weight: 700;">Healthshare.io</p>
+                        <p class="navbar-text" style="color: black; font-size: xx-large; font-weight: 700;">Healthshare.io</p>
 
-          
-        </div>
-    
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav navbar-right" style="margin-top: 10px;">
-            <li><a href="/map" style = "color: black;"> <span class="glyphicon glyphicon-map-marker"></span> Map</a></li>
-            <li><a href="/signup" style = "color: black;"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-            
-          </ul>
-            	
-          </div>
-      </div> 
-    </nav>
-  </header>
- 
 
-  
+                    </div>
 
-      <div style="
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav navbar-right" style="margin-top: 10px;">
+                            <li>
+                                <a href="/map" style="color: black;"> <span class="glyphicon glyphicon-map-marker"></span> Map</a>
+                            </li>
+                            <li><a href="/signup" style="color: black;"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+
+                        </ul>
+
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+
+
+
+        <div style="
     padding-right: 200px;
     padding-bottom: 30px;
     padding-left: 200px;">
-        <h2>
-          <h3 align="center">Login</h3><br>
-        </h2>
-        <form>
-          <div class="form-group">
-            <input type="user" class="form-control" id="user" placeholder="Benutzername" name="user">
-          </div>
-          <div class="form-group">
-            <input type="pwd" class="form-control" id="gloves" placeholder="Passwort" name="pwd">
-          </div>
-          <p>Passwort vergessen?</p>
-          <button type="submit" class="btn btn-default">Login</button>
-        </form>
-      </div>
-    </div>
+            <h2>
+                <h3 align="center">Login</h3><br>
+            </h2>
+            <form>
+                <div class="form-group">
+                    <input type="user" class="form-control" id="user" placeholder="Benutzername" name="user">
+                </div>
+                <div class="form-group">
+                    <input type="pwd" class="form-control" id="gloves" placeholder="Passwort" name="pwd">
+                </div>
+                <p>Passwort vergessen?</p>
+                <button type="submit" class="btn btn-default">Login</button>
+            </form>
+        </div>
+        </div>
 
-</body>
+    </body>
 
 </html>
