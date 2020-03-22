@@ -44,8 +44,6 @@ def showSignUp():
         inputAddress = details['inputAdress']
         inputContact = details['inputAnsprechpartner']
         inputTelephone = details['inputTelephone']
-        inputNeed = details['inputNeed']
-        inputAnzahlNeed = details['inputAnzahlNeed']
         inputGive= details['inputGive']
         inputAnzahlGive = details['inputAnzahlGive']
 
@@ -87,30 +85,30 @@ def showSignUp():
         #set object type 
         objecttypes = [{"Desinfektionsmittel":"disinfectants"}, {"Masken" : "masks"}, {"Handschuhe": "gloves"}]
         
-        if inputNeed and inputAnzahlNeed: 
-            for object in objecttypes: 
-                for key in object: 
-                    if inputNeed == key:
-                        objecttypeDB = object[key]
+        # if inputNeed and inputAnzahlNeed: 
+        #     for object in objecttypes: 
+        #         for key in object: 
+        #             if inputNeed == key:
+        #                 objecttypeDB = object[key]
         
-        #print(objecttypeDB)  
-            #insert into demand table - statement preparation
-            sql_demand= "INSERT INTO tbl_demand(fk_institutionid, objecttype, amount) VALUES (%s, %s,%s)"
+        # #print(objecttypeDB)  
+        #     #insert into demand table - statement preparation
+        #     sql_demand= "INSERT INTO tbl_demand(fk_institutionid, objecttype, amount) VALUES (%s, %s,%s)"
 
-            values_demand=(inst_id, objecttypeDB, inputAnzahlNeed )
-            print(sql_demand)
-            print(values_demand)
-            print(inst_id)
-            try: 
-                #insert into demand table - statement execution
-                cur.execute(sql_demand, values_demand)
-                mydb.commit()
-                print("bis hier ist ok")
-            except Exception as e: 
-                error = "Something went wrong while inserting the data into tbl_demand"
-                print(error)
-                print(e)
-                return render_template('signup.html', error=error)
+        #     values_demand=(inst_id, objecttypeDB, inputAnzahlNeed )
+        #     print(sql_demand)
+        #     print(values_demand)
+        #     print(inst_id)
+        #     try: 
+        #         #insert into demand table - statement execution
+        #         cur.execute(sql_demand, values_demand)
+        #         mydb.commit()
+        #         print("bis hier ist ok")
+        #     except Exception as e: 
+        #         error = "Something went wrong while inserting the data into tbl_demand"
+        #         print(error)
+        #         print(e)
+        #         return render_template('signup.html', error=error)
      
         if inputGive and inputAnzahlGive:
             for object in objecttypes: 
