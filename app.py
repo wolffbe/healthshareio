@@ -165,11 +165,14 @@ def showLogin():
 @app.route('/map')
 def showMap():
     return render_template('map.html')
-
-
+  
 @app.route('/showProfile')
 def showProfile():
     return render_template('profile.html')
+
+@app.route('/delivery')
+def showDelivery():
+    return render_template('delivery.html')
 
 @app.route('/deliveries')
 def showDeliveries():
@@ -203,8 +206,6 @@ def getMapPoints():
 
     print(payload)
     return jsonify(payload)
-
-
 
 if __name__ == '__main__':
     #app.run(debug=True, host='0.0.0.0', port=5000)
