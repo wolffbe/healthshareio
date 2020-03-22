@@ -36,6 +36,8 @@ In the folder "Database" a ".sql-File" can be found. This can be used to build u
 
 The database has the following tables: tbl_institutions, tbl_demand, tbl_supply, tbl_deliveries. 
 
+The hostname, database, username and password needs to be set in app.py. 
+
 ### Run in Docker (in development)
 
 Requirements:
