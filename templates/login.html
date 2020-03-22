@@ -26,5 +26,51 @@
       <input type="submit" value="Submit">
     </form> 
   </body>
+  <link rel="stylesheet" href="/static/css/login.css">
+  <!--Bootstrap-->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
 
+<body>
+  <header>
+    <ul class="nav justify-content-end">
+      <li class="nav-item">
+        <a class="nav-link" href="#">Map</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Aufträge</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" href="#">Anmelden/Sign Up</a>
+      </li>
+    </ul>
+  </header>
+  <main>
+    <div class="title">
+      <h1>Login</h1>
+    </div>
+    <form method="POST" action="signup.html">
+      <div class="form-row">
+        <div class="form-group col-lg-3 col-md-3 col-sm-5">
+          <label for="inputEmail">Email</label>
+          <input type="text" class="form-control" name="inputEmail" id="inputEmail"
+            placeholder="Bitte gib deine E-mail ein">
+        </div>
+        <div class="form-group col-lg-3 col-md-3 col-sm-5">
+          <label for="inputPassword">Passwort</label>
+          <input type="password" class="form-control" name="inputPassword" id="inputPassword"
+            placeholder="Bitte gib dein Passwort ein">
+        </div>
+        <div class="button">
+          <button type="submit" class="btn">Login</button>
+        </div>
+      </div>
+      <div class="button">
+        <button type="submit" class="btn btn-lg">Login</button>
+      </div>
+    </form>
+
+  </main>
+</body>
   </html>

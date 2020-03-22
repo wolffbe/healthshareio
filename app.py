@@ -1,13 +1,13 @@
 from flask import Flask, render_template, json, request, url_for, redirect, flash, jsonify
 from werkzeug.security import generate_password_hash, check_password_hash
 import mysql.connector
-
-
-
+import requests
+from flask_restful import Resource, Api
+from flask_cors import CORS
+import requests
 
 app = Flask(__name__)
 mydb = mysql.connector.connect(
-
         host="52.166.36.96",
         user="app",
         passwd="covid789", 
@@ -20,7 +20,7 @@ print(mydb)
 def main():
     return render_template('index.html')
 
-@app.route('/Signup', methods=['GET', 'POST'])
+@app.route('/signup', methods=['GET', 'POST'])
 def showSignUp():
     #bei Get soll er das nur rendern .. 
     if request.method=='POST': 
