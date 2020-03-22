@@ -174,7 +174,7 @@ def getMapPoints():
 
     for result in myresult: #create content for JSON
         content = {'id': result[0], 'name': result[1], 'address': result[3], 'lat': result[6], 'lng': result[7], 'type': result[2], 'market' : 'demand', 'disinfectant' : str(0) , 'gloves' : str(0), 'masks': str(0)}
-        sql='SELECT objecttype, SUM(amount) FROM tbl_demand WHERE fk_institutionid = {result[0]} GROUP BY objecttype;'
+        sql=f'SELECT objecttype, SUM(amount) FROM tbl_demand WHERE fk_institutionid = {result[0]} GROUP BY objecttype;'
         mycursor.execute(sql)
         result_demand = mycursor.fetchall()
         for demandtype in result_demand:
@@ -187,4 +187,5 @@ def getMapPoints():
 
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    #app.run(debug=True, host='0.0.0.0', port=5000)
+    app.run(port=5000)
