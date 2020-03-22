@@ -1,0 +1,95 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #FFBDBD;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #FFBDBD;
+}
+
+header {
+    width: 100%;
+    top: 0;
+    right: 0;
+}
+
+.nav {
+    display: flex;
+    height: 10vh;
+    background-color: #FFBDBD;
+    justify-content: right;
+    align-items: center;
+}
+
+.nav ul {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    float: right;
+}
+
+.nav ul li a {
+    text-decoration: none;
+    padding: 40px;
+    color: black;
+}
+
+.nav ul li a:hover {
+    text-decoration: underline;
+}
+
+.container {
+    height: 75vh;
+    display: flex;
+    background-attachment: fixed;
+}
+
+.map {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #E5E3E3;
+}
+
+.leaderboard {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #E1F7D5;
+}
+
+.container-Submit {
+    height: 10vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.container-Submit p {
+    font-size: 2em;
+}
+
+button {
+    height: 50px;
+    width: 150px;
+    font-size: 20px;
+    background-color: #F1C9FF;
+    border-radius: 25px;
+}
+
+.traffic_light {
+    display: flex;
+    justify-content: center;
+  }

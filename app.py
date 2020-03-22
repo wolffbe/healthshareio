@@ -2,7 +2,6 @@ from flask import Flask, render_template, json, request, url_for, redirect, flas
 from werkzeug.security import generate_password_hash, check_password_hash
 import mysql.connector
 import requests
-import mysql.connector
 from flask_cors import CORS, cross_origin
 
 app = Flask(__name__)
@@ -40,14 +39,11 @@ def showSignUp():
     #bei Get soll er das nur rendern .. 
     if request.method=='POST': 
          #setzen der variablen
-
         details = request.form
         inputName = details['inputName']
         inputAddress = details['inputAdress']
         inputContact = details['inputAnsprechpartner']
         inputTelephone = details['inputTelephone']
-        inputNeed = details['inputNeed']
-        inputAnzahlNeed = details['inputAnzahlNeed']
         inputGive= details['inputGive']
         inputAnzahlGive = details['inputAnzahlGive']
 
@@ -89,30 +85,30 @@ def showSignUp():
         #set object type 
         objecttypes = [{"Desinfektionsmittel":"disinfectants"}, {"Masken" : "masks"}, {"Handschuhe": "gloves"}]
         
-        if inputNeed and inputAnzahlNeed: 
-            for object in objecttypes: 
-                for key in object: 
-                    if inputNeed == key:
-                        objecttypeDB = object[key]
+        # if inputNeed and inputAnzahlNeed: 
+        #     for object in objecttypes: 
+        #         for key in object: 
+        #             if inputNeed == key:
+        #                 objecttypeDB = object[key]
         
-        #print(objecttypeDB)  
-            #insert into demand table - statement preparation
-            sql_demand= "INSERT INTO tbl_demand(fk_institutionid, objecttype, amount) VALUES (%s, %s,%s)"
+        # #print(objecttypeDB)  
+        #     #insert into demand table - statement preparation
+        #     sql_demand= "INSERT INTO tbl_demand(fk_institutionid, objecttype, amount) VALUES (%s, %s,%s)"
 
-            values_demand=(inst_id, objecttypeDB, inputAnzahlNeed )
-            print(sql_demand)
-            print(values_demand)
-            print(inst_id)
-            try: 
-                #insert into demand table - statement execution
-                cur.execute(sql_demand, values_demand)
-                mydb.commit()
-                print("bis hier ist ok")
-            except Exception as e: 
-                error = "Something went wrong while inserting the data into tbl_demand"
-                print(error)
-                print(e)
-                return render_template('signup.html', error=error)
+        #     values_demand=(inst_id, objecttypeDB, inputAnzahlNeed )
+        #     print(sql_demand)
+        #     print(values_demand)
+        #     print(inst_id)
+        #     try: 
+        #         #insert into demand table - statement execution
+        #         cur.execute(sql_demand, values_demand)
+        #         mydb.commit()
+        #         print("bis hier ist ok")
+        #     except Exception as e: 
+        #         error = "Something went wrong while inserting the data into tbl_demand"
+        #         print(error)
+        #         print(e)
+        #         return render_template('signup.html', error=error)
      
         if inputGive and inputAnzahlGive:
             for object in objecttypes: 
@@ -143,62 +139,43 @@ def showSignUp():
     elif request.method=='GET':
         return render_template('signup.html')
 
-@app.route('/showLogin',methods=['GET','POST'])
+@app.route('/login',methods=['GET','POST'])
 def showLogin():
     if request.method=='POST':
-        details=request.form
-        fName=details['fname']
-        lName=details['lname']
-
-        email='hallo'
-        
-        sql = "INSERT INTO users(username, password, email) VALUES (%s, %s, %s)"
-        val=(fName, lName, email)
-        
-        cur=mydb.cursor()
-
-        cur.execute(sql, val)
-        mydb.commit()
-        cur.close()
+        return redirect("/map") 
     
-        return('success')
     
     return render_template('login.html') 
 
 @app.route('/map')
 def showMap():
     return render_template('map.html')
-
-@app.route('/mapPoints') #retrieve map points in the database
-def getMapPoints():
-    mycursor = mydb.cursor()
-
-    mycursor.execute("SELECT * FROM tbl_institutions")
-
-    myresult = mycursor.fetchall()
-    payload = []
-    content = {}
-    for result in myresult:
-       content = {'institutionid': result[0], 'name': result[1], 'type': result[2], 'address': result[3], 'contact': result[4], 'telephone': result[5], 'lat': result[6], 'lng': result[7]}
-       payload.append(content)
-       content = {}
-    return jsonify(payload)
-
-   # myresult = mycursor.fetchone() for just the first result
-    # jsonResults = json.dumps(myresult)
-
-  #  for x in myresult:
-   #     print(x)
-   # return ('test')
-
-@app.route('/showProfile')
+  
+@app.route('/profile')
 def showProfile():
     return render_template('profile.html')
 
+@app.route('/delivery', methods=['GET','POST'])
+def showDelivery():
+    if request.method == 'POST': 
+        beitrag="/static/img/green.png"
+        versand="/static/img/yellow.png"
+        welcometext="Vielen Dank für Ihre Spende!"
+        return render_template('delivery.html', beitrag=beitrag, versand=versand, welcometext=welcometext)
+
+    elif request.method=="GET":
+        versand="/static/img/red.png"
+        beitrag="/static/img/yellow.png"
+        welcometext="Jetzt Beitrag konfigurieren!"
+        return render_template('delivery.html', beitrag=beitrag, versand=versand, welcometext=welcometext)
+
 @app.route('/deliveries')
 def showDeliveries():
-    username = request.args.get('username')
-    print(username)
+    id = request.args.get('id')
+    print(id)
+    mycursor = mydb.cursor()
+    mycursor.execute("SELECT * FROM tbl_institutions") #Mquery MySQLDB
+    
     return render_template('deliveries.html')
 
 @app.route('/mapPoints') #retrieve map points in the database
@@ -225,9 +202,5 @@ def getMapPoints():
     print(payload)
     return jsonify(payload)
 
-
-
 if __name__ == '__main__':
-    #app.run(debug=True, host='0.0.0.0', port=5000)
-    app.run(port=5000)
-
+    app.run(debug=True, host='127.0.0.1', port=5000)
