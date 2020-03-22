@@ -2,7 +2,6 @@ from flask import Flask, render_template, json, request, url_for, redirect, flas
 from werkzeug.security import generate_password_hash, check_password_hash
 import mysql.connector
 import requests
-import mysql.connector
 from flask_cors import CORS, cross_origin
 
 app = Flask(__name__)
@@ -40,7 +39,6 @@ def showSignUp():
     #bei Get soll er das nur rendern .. 
     if request.method=='POST': 
          #setzen der variablen
-
         details = request.form
         inputName = details['inputName']
         inputAddress = details['inputAdress']
@@ -146,19 +144,8 @@ def showSignUp():
 @app.route('/login',methods=['GET','POST'])
 def showLogin():
     if request.method=='POST':
-        details=request.form
-        fName=details['fname']
-        lName=details['lname']
-        email='xyz@zwq.de'
-        
-        sql = "INSERT INTO users(username, password, email) VALUES (%s, %s, %s)"
-        val=(fName, lName, email)
-        cur=mydb.cursor()
-        cur.execute(sql, val)
-        mydb.commit()
-        cur.close()
+        return redirect("/map") 
     
-        return('success')
     
     return render_template('login.html') 
 
