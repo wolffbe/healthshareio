@@ -6,23 +6,16 @@ from flask_cors import CORS, cross_origin
 
 app = Flask(__name__)
 mydb = mysql.connector.connect(
-        host="52.166.36.96",
-        user="app",
-        passwd="covid789", 
-        database ="hackathon"
+        host=,
+        user=,
+        passwd=, 
+        database =
     )       
 
 print(mydb)
 
 cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
-
-mydb = mysql.connector.connect(
-        host="52.166.36.96",
-        user="app",
-        passwd="covid789", 
-        database ="hackathon"
-    )
 
 print(mydb)
 app.config['JSON_SORT_KEYS']=False
@@ -36,7 +29,7 @@ def main():
 
 @app.route('/signup', methods=['GET', 'POST'])
 def showSignUp():
-    #bei Get soll er das nur rendern .. 
+     
     if request.method=='POST': 
          #setzen der variablen
         details = request.form
@@ -49,7 +42,6 @@ def showSignUp():
 
 
         #set institution type
-
         if details['inputInstitution'] == "Medizinische Einrichtung": 
             institutionType = "medical"
         elif details['inputInstitution'] == "Unternehmen": 
@@ -85,6 +77,7 @@ def showSignUp():
         #set object type 
         objecttypes = [{"Desinfektionsmittel":"disinfectants"}, {"Masken" : "masks"}, {"Handschuhe": "gloves"}]
         
+        # if the user wants to add a need
         # if inputNeed and inputAnzahlNeed: 
         #     for object in objecttypes: 
         #         for key in object: 
@@ -109,7 +102,7 @@ def showSignUp():
         #         print(error)
         #         print(e)
         #         return render_template('signup.html', error=error)
-     
+        #if the user wants to add a supply 
         if inputGive and inputAnzahlGive:
             for object in objecttypes: 
                 for key in object: 
@@ -140,11 +133,7 @@ def showSignUp():
         return render_template('signup.html')
 
 @app.route('/login',methods=['GET','POST'])
-def showLogin():
-    if request.method=='POST':
-        return redirect("/map") 
-    
-    
+def showLogin():    
     return render_template('login.html') 
 
 @app.route('/map')
@@ -157,6 +146,7 @@ def showProfile():
 
 @app.route('/delivery', methods=['GET','POST'])
 def showDelivery():
+    #changing of the colours in the traffic lights
     if request.method == 'POST': 
         beitrag="/static/img/green.png"
         versand="/static/img/yellow.png"
@@ -170,12 +160,7 @@ def showDelivery():
         return render_template('delivery.html', beitrag=beitrag, versand=versand, welcometext=welcometext)
 
 @app.route('/deliveries')
-def showDeliveries():
-    id = request.args.get('id')
-    print(id)
-    mycursor = mydb.cursor()
-    mycursor.execute("SELECT * FROM tbl_institutions") #Mquery MySQLDB
-    
+def showDeliveries():    
     return render_template('deliveries.html')
 
 @app.route('/mapPoints') #retrieve map points in the database
@@ -201,6 +186,6 @@ def getMapPoints():
 
     print(payload)
     return jsonify(payload)
-
+#start app
 if __name__ == '__main__':
     app.run(debug=True, host='127.0.0.1', port=5000)
