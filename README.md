@@ -10,7 +10,7 @@ Via our web app, companies gain insight in the current market demand, understand
 
 Healthshare allows companies to sign up on our website, choose a medical institution they want to support, choose how much equipment they want to donate and allows them to track their donation.
 
-![homepage](./static/img/home.png)
+![homepage](static/img/home.PNG)
 
 ## Architecture
 
@@ -43,6 +43,6 @@ The web app is accesible via `localhost:5000`.
 
 ## License
 
-Open-source. However, we used company logos that might be subject to copyright and make use of the Google Maps Platform.
+Open-source. However, we used company logos that might be subject to copyright and make use of the Google Maps Platform. The map screenshot is under copyright of Google LLC.
 
-The companies behind the logos were and are not involved in the development of this product.
+The companies behind the logos were and are not involved in the development of this prototype.
