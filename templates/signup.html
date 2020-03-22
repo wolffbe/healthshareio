@@ -26,9 +26,7 @@
             <span class="icon-bar"></span>
           </button>
                     <a class="navbar-brand" href="/">
-                        <img alt="Brand" src="/static/Logo-small.png">
-
-
+                        <img alt="Brand" src="{{url_for('static', filename='img/logo-small.png')}}">
                     </a>
 
                     <p class="navbar-text" style="color: black; font-size: xx-large; font-weight: 700;">Healthshare.io</p>
@@ -48,7 +46,9 @@
         </nav>
     </header>
     <main>
-        <b><h2 align="center" style="color: black; padding-bottom: 10px; padding-top: 5px;">Registrierung</h2></b>
+        <b>
+      <h2 align="center" style="color: black; padding-bottom: 10px; padding-top: 5px;">Registrierung</h2>
+    </b>
 
         <form action="http://localhost:5000/signup" method="post">
             <div class="form-group row">
