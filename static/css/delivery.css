@@ -26,8 +26,6 @@ header {
     align-items: center;
 }
 
-
-
 .nav ul {
     display: flex;
     justify-content: space-between;
@@ -90,3 +88,8 @@ button {
     background-color: #F1C9FF;
     border-radius: 25px;
 }
+
+.traffic_light {
+    display: flex;
+    justify-content: center;
+  }

@@ -12,9 +12,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
     <!--Stylesheet CSS-->
-
     <link rel="stylesheet" href="/static/css/index1.css">
-
 </head>
 
 <body>
@@ -31,7 +29,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="/">
-                    <img src="{{url_for('static', filename='img/logo-small.png')}}"/>
+                    <img src="{{url_for('static', filename='img/logo-small.png')}}" />
                 </a>
                 <p class="navbar-text" style="color: black;">Healthshare.io</p>
             </div>
@@ -51,43 +49,76 @@
         </div>
     </nav>
     <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="jumbotron">
-        <div class="container">
-            <h1>Sharing is caring!</h1>
-            <p>Sind sie ein Unternehmen und wollen sie aktiv werden in den Kampf gegen Corona? Sie haben ein
-                Lagerbestand an Hilfsmittel wie Masken, Einweghandschuh oder Disinfektionsmittel die sie nicht brauchen
-                weil sie geschlossen haben? Dann sind sie hier richtig. Wir verbinden sie mit medizinische Einrichtungen
-                die drngend ihre Spenden benötigen. </p>
-            <p><a class="btn btn-primary btn-lg" href="#" role="button">Sign Up Now &raquo;</a></p>
+    <div class="container">
+        <div>
+            <h3 align="center">Danke, dass sie {name} unterstützen wollen! {name} benötigt {disinfectant} Liter
+                Desinfektionsmittel, {gloves} Paar Handschuhe und {masks} Schutzmasken!</h3>
         </div>
+    </div>
+
+    <div style="
+    padding-right: 200px;
+    padding-bottom: 30px;
+    padding-left: 200px;">
+        <h2>
+            <h3 align="center">Jetzt Beitrag konfigurieren!</h3><br>
+        </h2>
+        <form>
+            <div class="form-group">
+                <label for="disinfectant">
+                    <h4>Desinfektionsmittel:</h4>
+                </label>
+                <input type="disinfectant" class="form-control" id="disinfectant" placeholder="Liter"
+                    name="disinfectant">
+            </div>
+            <div class="form-group">
+                <label for="gloves">
+                    <h4>Handschuhe:</h4>
+                </label>
+                <input type="gloves" class="form-control" id="gloves" placeholder="Paar" name="gloves">
+            </div>
+            <div class="form-group">
+                <label for="masks">
+                    <h4>Schutzmasken:</h4>
+                </label>
+                <input type="masks" class="form-control" id="masks" placeholder="Anzahl" name="masks">
+            </div>
+            <button type="submit" class="btn btn-default">Wie viel kannst du beitragen?</button>
+        </form>
     </div>
 
     <div class="container">
         <!-- Example row of columns -->
         <div class="row">
             <div class="col-md-4">
-                <h2>Beitrag</h2>
-                <img src="{{url_for('static', filename='red.png')}}" height="60"/>
+                <h2 align="center">Beitrag</h2>
+                <div class="traffic_light">
+                    <img src="{{url_for('static', filename='img/yellow.png')}}" height="100px"
+                        style="display:block; margin-left: auto; margin-right: auto;" />
+                </div>
             </div>
             <div class="col-md-4">
-                <h2>Versand</h2>
-                <img src="{{url_for('static', filename='red.png')}}" height="60"/>
+                <h2 align="center">Versand</h2>
+                <div class="traffic_light">
+                    <img src="{{url_for('static', filename='img/red.png')}}" height="100px"
+                        style="display:block; margin-left: auto; margin-right: auto;" />
+                </div>
             </div>
             <div class="col-md-4">
-                <h2>Erhalt</h2>
-                <img src="{{url_for('static', filename='red.png')}}" height="60"/>
-            </div>
-            <div class="col-md-4">
-                <h2>Spende</h2>
-                <img src="{{url_for('static', filename='red.png')}}" height="60"/>
+                <h2 align="center">Erhalt</h2>
+                <div class="traffic_light">
+                    <img src="{{url_for('static', filename='img/red.png')}}" height="100px"
+                        style="display:block; margin-left: auto; margin-right: auto;" />
+                </div>
             </div>
         </div>
     </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
     </nav>
 
-
-
+    <footer>
+        <p>&copy; healthshare.io 2020</p>
+    </footer>
 </body>
 
 </html>
