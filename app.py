@@ -34,7 +34,7 @@ def showSignUp():
          #setzen der variablen
         details = request.form
         inputName = details['inputName']
-        inputAddress= details['inputAdress']
+        inputAddress = details['inputAdress']
         inputContact = details['inputAnsprechpartner']
         inputTelephone = details['inputTelephone']
         inputNeed = details['inputNeed']
