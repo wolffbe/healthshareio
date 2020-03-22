@@ -169,28 +169,6 @@ def showLogin():
 def showMap():
     return render_template('map.html')
 
-@app.route('/mapPoints') #retrieve map points in the database
-def getMapPoints():
-    mycursor = mydb.cursor()
-
-    mycursor.execute("SELECT * FROM tbl_institutions")
-
-    myresult = mycursor.fetchall()
-    payload = []
-    content = {}
-    for result in myresult:
-       content = {'institutionid': result[0], 'name': result[1], 'type': result[2], 'address': result[3], 'contact': result[4], 'telephone': result[5], 'lat': result[6], 'lng': result[7]}
-       payload.append(content)
-       content = {}
-    return jsonify(payload)
-
-   # myresult = mycursor.fetchone() for just the first result
-    # jsonResults = json.dumps(myresult)
-
-  #  for x in myresult:
-   #     print(x)
-   # return ('test')
-
 @app.route('/showProfile')
 def showProfile():
     return render_template('profile.html')
@@ -224,8 +202,6 @@ def getMapPoints():
 
     print(payload)
     return jsonify(payload)
-
-
 
 if __name__ == '__main__':
     #app.run(debug=True, host='0.0.0.0', port=5000)
