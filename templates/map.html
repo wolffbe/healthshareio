@@ -4,14 +4,13 @@
   <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
   <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <title>Healthshare</title>
+  <title>Healthshare Map</title>
   <style>
     /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
     #map {
       height: 100%;
     }
-
     /* Optional: Makes the sample page fill the window. */
     html,
     body {
@@ -34,73 +33,85 @@
       }
     };
 
-    var json = [{ "id": 1, "name": "Asklepios Krankenhaus St. Georg", "address": "Lohmühlenstraße 5, 20099 Hamburg", "lat": "53.552610", "lng": "10.018630", "type": "medical", "market": "demand", "desinfectant": 100, "gloves": 100, "masks": 100 }, { "id": 2, "name": "Facharztpraxis für Pneumologie und Gynäkologie | St. Georg", "address": "Steindamm 32, 20099 Hamburg", "lat": "53.5536654", "lng": "10.0127984", "type": "medical", "market": "demand", "desinfectant": 1, "gloves": 0, "masks": 0 }, { "id": 3, "name": "Gesundheitszentrum Dr. Dr. Müller und Kollegen AG", "address": "Kurze Mühren 6, 20095 Hamburg", "lat": "53.5529624", "lng": "10.003574", "type": "medical", "market": "demand", "desinfectant": 1, "gloves": 0, "masks": 0 }, { "id": 4, "name": "Dr. med. Paul Schulz prakt. Arzt", "address": "Grootsruhe 2, 20537 Hamburg", "lat": "53.5551489", "lng": "10.042497", "type": "medical", "market": "demand", "desinfectant": 1, "gloves": 0, "masks": 10 }, { "id": 5, "name": "Gemeinschaftspraxis für Allgemeinmedizin - Dr. Olaf Feuer; Cornelia Traub; Dr. Eda Siebke", "address": "Hein-Köllisch-Platz 1, 20359 Hamburg", "lat": "53.5477104", "lng": "9.9575079", "type": "medical", "market": "demand", "desinfectant": 1, "gloves": 0, "masks": 10 }, { "id": 6, "name": "Gemeinschaftspraxis für Allgemeinmedizin Hamburg", "address": "Clemens-Schultz-Straße 90, 20359 Hamburg", "lat": "53.5524253", "lng": "9.9639571", "type": "medical", "market": "demand", "desinfectant": 0, "gloves": 0, "masks": 10 }, { "id": 7, "name": "Pflegehotel im St. Matthäus Krankenhaus", "address": "Billstraße 28, 20539 Hamburg", "lat": "53.5412576", "lng": "10.0342172", "type": "medical", "market": "demand", "desinfectant": 0, "gloves": 0, "masks": 10 }, { "id": 8, "name": "Hebammenpraxis Hamburg", "address": "Armbruststraße 9, 20257 Hamburg", "lat": "53.5750086", "lng": "9.9427398", "type": "medical", "market": "demand", "desinfectant": 1, "gloves": 10, "masks": 10 }, { "id": 9, "name": "Seniorenhaus Christophorus", "address": "Maria-Louisen-Straße 30, 22301 Hamburg", "lat": "53.5931082", "lng": "10.0077099", "type": "medical", "market": "demand", "desinfectant": 1, "gloves": 10, "masks": 10 }, { "id": 10, "name": "G.U.A.R.D. Rettungswache Hamburg Nord", "address": "Alfredstraße 9, 22087 Hamburg", "lat": "53.559671", "lng": "10.0329609", "type": "medical", "market": "demand", "desinfectant": 1, "gloves": 10, "masks": 10 }];
+    $.ajax({
+      type: 'get',
+      url: 'http://localhost:5000/mapPoints',
+      crossDomain: true,
+      dataType: 'json',
+      headers: {
+        "Access-Control-Allow-Origin": "*"
+      },
+      success: function (json, textStatus, jqXHR) {
+        console.log(json);
+        initMap(json);
+      },
+      error: function (responseData, textStatus, errorThrown) {
+        console.warn(responseData, textStatus, errorThrown);
+        alert('CORS failed - ' + textStatus);
+      }
+    });
+    
+    //var json = [{ "id": 1, "name": "Asklepios Krankenhaus St. Georg", "address": "Lohmühlenstraße 5, 20099 Hamburg", "lat": "53.552610", "lng": "10.018630", "type": "medical", "market": "demand", "desinfectant": 100, "gloves": 100, "masks": 100 }, { "id": 2, "name": "Facharztpraxis für Pneumologie und Gynäkologie | St. Georg", "address": "Steindamm 32, 20099 Hamburg", "lat": "53.5536654", "lng": "10.0127984", "type": "medical", "market": "demand", "desinfectant": 1, "gloves": 0, "masks": 0 }, { "id": 3, "name": "Gesundheitszentrum Dr. Dr. Müller und Kollegen AG", "address": "Kurze Mühren 6, 20095 Hamburg", "lat": "53.5529624", "lng": "10.003574", "type": "medical", "market": "demand", "desinfectant": 1, "gloves": 0, "masks": 0 }, { "id": 4, "name": "Dr. med. Paul Schulz prakt. Arzt", "address": "Grootsruhe 2, 20537 Hamburg", "lat": "53.5551489", "lng": "10.042497", "type": "medical", "market": "demand", "desinfectant": 1, "gloves": 0, "masks": 10 }, { "id": 5, "name": "Gemeinschaftspraxis für Allgemeinmedizin - Dr. Olaf Feuer; Cornelia Traub; Dr. Eda Siebke", "address": "Hein-Köllisch-Platz 1, 20359 Hamburg", "lat": "53.5477104", "lng": "9.9575079", "type": "medical", "market": "demand", "desinfectant": 1, "gloves": 0, "masks": 10 }, { "id": 6, "name": "Gemeinschaftspraxis für Allgemeinmedizin Hamburg", "address": "Clemens-Schultz-Straße 90, 20359 Hamburg", "lat": "53.5524253", "lng": "9.9639571", "type": "medical", "market": "demand", "desinfectant": 0, "gloves": 0, "masks": 10 }, { "id": 7, "name": "Pflegehotel im St. Matthäus Krankenhaus", "address": "Billstraße 28, 20539 Hamburg", "lat": "53.5412576", "lng": "10.0342172", "type": "medical", "market": "demand", "desinfectant": 0, "gloves": 0, "masks": 10 }, { "id": 8, "name": "Hebammenpraxis Hamburg", "address": "Armbruststraße 9, 20257 Hamburg", "lat": "53.5750086", "lng": "9.9427398", "type": "medical", "market": "demand", "desinfectant": 1, "gloves": 10, "masks": 10 }, { "id": 9, "name": "Seniorenhaus Christophorus", "address": "Maria-Louisen-Straße 30, 22301 Hamburg", "lat": "53.5931082", "lng": "10.0077099", "type": "medical", "market": "demand", "desinfectant": 1, "gloves": 10, "masks": 10 }, { "id": 10, "name": "G.U.A.R.D. Rettungswache Hamburg Nord", "address": "Alfredstraße 9, 22087 Hamburg", "lat": "53.559671", "lng": "10.0329609", "type": "medical", "market": "demand", "desinfectant": 1, "gloves": 10, "masks": 10 }];
 
-    function initMap() {
+    function initMap(json) {
       var map = new google.maps.Map(document.getElementById('map'), {
-        center: new google.maps.LatLng(53.550341, 10.000654),
-        zoom: 12
+        center: new google.maps.LatLng(53.5666196, 9.9939329),
+        zoom: 13
       });
       var infoWindow = new google.maps.InfoWindow;
 
-      for (var obj in json) {
-
-        var id = json[obj].id;
-        var name = json[obj].name;
-        var address = json[obj].address;
-        var point = new google.maps.LatLng(
-          parseFloat(json[obj].lat),
-          parseFloat(json[obj].lng));
-        var type = json[obj].type;
-        var market = json[obj].market;
-        var desinfectant = json[obj].desinfectant;
-        var gloves = json[obj].gloves;
-        var masks = json[obj].masks;
-
-        var infowincontent = document.createElement('div');
-        var strong = document.createElement('strong');
-        strong.textContent = name;
-        infowincontent.appendChild(strong);
-        infowincontent.appendChild(document.createElement('br'));
-        var text = document.createElement('text');
-        text.textContent = address;
-        infowincontent.appendChild(text);
-        if (market == "demand") {
-          console.log(market);
-          infowincontent.appendChild(text);
-          var text = document.createElement('p');
-          text.textContent = "Wir benötigen " +
-            desinfectant + " Liter Desinfektionsmittel, " +
-            gloves + " Paar Handschuhe und " +
-            masks + " Schutzmasken!";
-          infowincontent.appendChild(text);
-        } else if (market == "supply") {
-          var supply = document.createElement('p');
-          demand.textContent = "Wir bieten " +
-            desinfectant + " Liter Desinfektionsmittel, " +
-            gloves + " Paar Handschuhe und " +
-            masks + " Schutzmasken!";
-        } else { }
-
-        var btn = document.createElement("BUTTON");   // Create a <button> element
-        btn.innerHTML = "JETZT HELFEN!";                   // Insert text
-        infowincontent.appendChild(btn);
-
-        var icon = customLabel[type] || {};
+      for (i = 0; i < json.length; i++) {
+        var icon = customLabel[json[i].type] || {};
         var marker = new google.maps.Marker({
           map: map,
-          position: point,
+          position: new google.maps.LatLng(parseFloat(json[i].lat), parseFloat(json[i].lng)),
           label: icon.label
         });
-        marker.addListener('click', togglePopUp)
 
-        function togglePopUp() {
-          infoWindow.setContent(infowincontent);
-          infoWindow.open(map, marker);
-        }
+        google.maps.event.addListener(marker, 'click', (function (marker, i) {
+          return function () {
+
+            var infowincontent = null;
+
+            var infowincontent = document.createElement('div');
+            var strong = document.createElement('strong');
+            strong.textContent = json[i].name;
+            infowincontent.appendChild(strong);
+            infowincontent.appendChild(document.createElement('br'));
+
+            var text = document.createElement('text');
+            text.textContent = json[i].address;
+            infowincontent.appendChild(text);
+
+            if (json[i].market == "demand") {
+              var text = document.createElement('p');
+              text.textContent = "Wir benötigen " +
+                json[i].disinfectant + " Liter Desinfektionsmittel, " +
+                json[i].gloves + " Paar Handschuhe und " +
+                json[i].masks + " Schutzmasken!";
+              infowincontent.appendChild(text);
+            }
+            else if (json[i].market == "supply") {
+              var supply = document.createElement('p');
+              demand.textContent = "Wir bieten " +
+                json[i].disinfectant + " Liter Desinfektionsmittel, " +
+                json[i].gloves + " Paar Handschuhe und " +
+                json[i].masks + " Schutzmasken!";
+            }
+            var link = "localhost:5000/delivery?id=" + json[i].id;
+            var btn = document.createElement('button');
+            btn.textContent = 'JETZT HELFEN!';
+            btn.addEventListener("click", function () {
+              location = link; // Navigate to new page
+            });
+
+            infowincontent.appendChild(btn);
+            infoWindow.setContent(infowincontent);
+            infoWindow.open(map, marker);
+          }
+        })(marker, i));
       }
     }
-
   </script>
   <!-- Replace the value of the key parameter with your own API key. -->
   <script async defer
