@@ -1,12 +1,19 @@
 from flask import Flask, render_template, json, request, url_for, redirect, flash, jsonify
-
 from werkzeug.security import generate_password_hash, check_password_hash
+import mysql.connector
 import requests
 import mysql.connector
-
 from flask_cors import CORS, cross_origin
 
 app = Flask(__name__)
+mydb = mysql.connector.connect(
+        host="52.166.36.96",
+        user="app",
+        passwd="covid789", 
+        database ="hackathon"
+    )       
+
+print(mydb)
 
 cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
@@ -27,11 +34,13 @@ app.config['JSON_AS_ASCII'] = False
 def main():
     return render_template('index.html')
 
-@app.route('/Signup', methods=['GET', 'POST'])
+
+@app.route('/signup', methods=['GET', 'POST'])
 def showSignUp():
     #bei Get soll er das nur rendern .. 
     if request.method=='POST': 
          #setzen der variablen
+
         details = request.form
         inputName = details['inputName']
         inputAddress = details['inputAdress']
@@ -42,7 +51,9 @@ def showSignUp():
         inputGive= details['inputGive']
         inputAnzahlGive = details['inputAnzahlGive']
 
+
         #set institution type
+
         if details['inputInstitution'] == "Medizinische Einrichtung": 
             institutionType = "medical"
         elif details['inputInstitution'] == "Unternehmen": 
@@ -50,8 +61,10 @@ def showSignUp():
         else: 
             institutionType="undefined"
         
+
         #sql statement preparation
         sql_institution = "INSERT INTO tbl_institutions (name, type, address, contact, telephone, lat, lng) VALUES(%s,%s,%s,%s,%s,%s,%s)"
+
         values_institution = (inputName, institutionType,inputAddress, inputContact, inputTelephone, 0.0, 0.0)
 
         print(sql_institution)
@@ -126,6 +139,7 @@ def showSignUp():
 
         return redirect("/map")    
 
+
     elif request.method=='GET':
         return render_template('signup.html')
 
@@ -135,12 +149,14 @@ def showLogin():
         details=request.form
         fName=details['fname']
         lName=details['lname']
+
         email='hallo'
         
         sql = "INSERT INTO users(username, password, email) VALUES (%s, %s, %s)"
         val=(fName, lName, email)
         
         cur=mydb.cursor()
+
         cur.execute(sql, val)
         mydb.commit()
         cur.close()
@@ -153,12 +169,36 @@ def showLogin():
 def showMap():
     return render_template('map.html')
 
+@app.route('/mapPoints') #retrieve map points in the database
+def getMapPoints():
+    mycursor = mydb.cursor()
+
+    mycursor.execute("SELECT * FROM tbl_institutions")
+
+    myresult = mycursor.fetchall()
+    payload = []
+    content = {}
+    for result in myresult:
+       content = {'institutionid': result[0], 'name': result[1], 'type': result[2], 'address': result[3], 'contact': result[4], 'telephone': result[5], 'lat': result[6], 'lng': result[7]}
+       payload.append(content)
+       content = {}
+    return jsonify(payload)
+
+   # myresult = mycursor.fetchone() for just the first result
+    # jsonResults = json.dumps(myresult)
+
+  #  for x in myresult:
+   #     print(x)
+   # return ('test')
+
 @app.route('/showProfile')
 def showProfile():
     return render_template('profile.html')
 
-@app.route('/showDeliveries')
+@app.route('/deliveries')
 def showDeliveries():
+    username = request.args.get('username')
+    print(username)
     return render_template('deliveries.html')
 
 @app.route('/mapPoints') #retrieve map points in the database
@@ -186,6 +226,8 @@ def getMapPoints():
     return jsonify(payload)
 
 
+
 if __name__ == '__main__':
     #app.run(debug=True, host='0.0.0.0', port=5000)
     app.run(port=5000)
+
