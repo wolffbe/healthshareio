@@ -4,38 +4,19 @@
   <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
   <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <title>Healthshare</title>
+  <title>Healthshare Map</title>
   <style>
     /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
     #map {
       height: 100%;
     }
-
     /* Optional: Makes the sample page fill the window. */
     html,
     body {
       height: 100%;
       margin: 0;
       padding: 0;
-    }
-
-    #pac-input {
-      background-color: #fff;
-      font-family: Roboto;
-      font-size: 15px;
-      font-weight: 300;
-      margin-left: 12px;
-      padding: 0 11px 0 13px;
-      text-overflow: ellipsis;
-      width: 400px;
-      position: fixed;
-      bottom: 0;
-      left: 0;
-    }
-
-    #pac-input:focus {
-      border-color: #4d90fe;
     }
   </style>
 </head>
@@ -73,8 +54,8 @@
 
     function initMap() {
       var map = new google.maps.Map(document.getElementById('map'), {
-        center: new google.maps.LatLng(51.282757, 10.495068),
-        zoom: 7
+        center: new google.maps.LatLng(53.5666196, 9.9939329),
+        zoom: 13
       });
       var infoWindow = new google.maps.InfoWindow;
 
@@ -136,7 +117,6 @@
   <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAa2q4wDgv2bikmWv7fEgt1j66wJjltQYQ&callback=initMap">
     </script>
-  <input id="pac-input" class="controls" type="text" placeholder="Wo kannst du helfen?">
 </body>
 
 </html>
